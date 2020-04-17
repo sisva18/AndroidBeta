@@ -71,6 +71,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * Return the last data from the database
+     * @return
+     */
+    public void getLastData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT "+ COL2 + "FROM " + TABLE_NAME+
+                "ORDER BY " + COL1 + "DESC LIMIT 1";
+        db.execSQL(query);
+        //NOT WORKING HAVE TO FIND OUT HOW TO RETURN THE LAST DATA TO CALCULATE HOW MUCH THE USER NEEDS TO LIFT
+
+    }
+    /**
      * Returns only the ID that matches the name passed in
      * @param name
      * @return
