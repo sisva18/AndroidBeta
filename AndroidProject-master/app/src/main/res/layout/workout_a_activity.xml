@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.137" />
 
     <Button
-        android:id="@+id/monday"
+        android:id="@+id/addFirst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sqaut"
@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="Enter reps completed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
