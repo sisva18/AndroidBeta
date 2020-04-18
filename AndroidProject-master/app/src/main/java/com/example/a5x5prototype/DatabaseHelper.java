@@ -76,7 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * Return the last data from the database
      * @return
      */
-    public String getLastData(){
+   /* public String getLastData(){
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = new String[]{COL2};
         Cursor data = db.query(TABLE_NAME, columns, null,null,null,null,null) ;
@@ -91,10 +91,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return result;
 
-    }
+    }*/
+
     public Cursor getLast(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL2 + "  FROM " + TABLE_NAME + " ORDER "+ " BY "+ " ID " + " DESC " + " LIMIT 1"; //actually not buggin with the right query but ye still not getting how i can use it in my activity
+        String query = "SELECT " + COL2 + "  FROM " + TABLE_NAME + " ORDER "+ " BY "+ " ID " + " DESC " ; //actually not buggin with the right query but ye still not getting how i can use it in my activity
 
         Cursor cursor = db.rawQuery(query, null);
 
@@ -110,6 +111,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @param name
      * @return
      */
+    /*
     public Cursor getItemID(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT " + COL1 + " FROM " + TABLE_NAME +
@@ -117,13 +119,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query, null);
         return data;
     }
-
+    */
     /**
      * Updates the name field
      * @param newName
      * @param id
      * @param oldName
      */
+    /*
     public void updateName(String newName, int id, String oldName){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "UPDATE " + TABLE_NAME + " SET " + COL2 +
@@ -133,7 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "updateName: Setting name to " + newName);
         db.execSQL(query);
     }
-
+    */
     /**
      * Delete from database
      * @param id

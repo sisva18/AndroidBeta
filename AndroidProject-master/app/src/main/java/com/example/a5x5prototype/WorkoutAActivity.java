@@ -24,19 +24,16 @@ public class WorkoutAActivity extends AppCompatActivity {
         editText2 = (EditText) findViewById(R.id.editText2);
         textView = (TextView) findViewById(R.id.tView);
 
-
-
-        //textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
-
         repsLeft = 5;
         setsLeft = 5;
-
+        //textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
+        textView.setText(mDatabaseHelper.getLast().toString());
         addFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setsLeft--;
 
-                //textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
+                textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
 
 
 
@@ -47,6 +44,7 @@ public class WorkoutAActivity extends AppCompatActivity {
 
                 if(setsLeft==0){
                     textView.setText("Sqaut completed move on to next exercise");
+
                 }
                 if(repsLeft<repsLeft){
                     //deload 10% database update
