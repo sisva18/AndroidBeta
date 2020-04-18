@@ -92,7 +92,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
 
     }*/
-
+    /*
     public Cursor getLast(){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT " + COL2 + "  FROM " + TABLE_NAME + " ORDER "+ " BY "+ " ID " + " DESC " ; //actually not buggin with the right query but ye still not getting how i can use it in my activity
@@ -104,7 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    //just a dummy function to read from database
+    */
 
     /**
      * Returns only the ID that matches the name passed in
@@ -126,7 +126,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @param id
      * @param oldName
      */
-    /*
+
     public void updateName(String newName, int id, String oldName){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "UPDATE " + TABLE_NAME + " SET " + COL2 +
@@ -136,7 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "updateName: Setting name to " + newName);
         db.execSQL(query);
     }
-    */
+
     /**
      * Delete from database
      * @param id
