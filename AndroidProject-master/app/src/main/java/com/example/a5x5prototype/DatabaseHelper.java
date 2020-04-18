@@ -92,10 +92,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
 
     }*/
-    /*
+
     public Cursor getLast(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL2 + "  FROM " + TABLE_NAME + " ORDER "+ " BY "+ " ID " + " DESC " ; //actually not buggin with the right query but ye still not getting how i can use it in my activity
+        String query = "SELECT " + COL2 + "  FROM " + TABLE_NAME + " ORDER "+ " BY "+ " ID " + " DESC LIMIT 1" ; //actually not buggin with the right query but ye still not getting how i can use it in my activity
 
         Cursor cursor = db.rawQuery(query, null);
 
@@ -104,7 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    */
+
 
     /**
      * Returns only the ID that matches the name passed in

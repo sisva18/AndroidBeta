@@ -15,6 +15,7 @@ public class WorkoutAActivity extends AppCompatActivity {
     private EditText editText2;
     private TextView textView;
     public int setsLeft, repsLeft;
+    private String test = null;
     DatabaseHelper mDatabaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,8 @@ public class WorkoutAActivity extends AppCompatActivity {
         repsLeft = 5;
         setsLeft = 5;
         //textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
+
+
         textView.setText(mDatabaseHelper.getLast().toString());
         addFirst.setOnClickListener(new View.OnClickListener() {
             @Override
