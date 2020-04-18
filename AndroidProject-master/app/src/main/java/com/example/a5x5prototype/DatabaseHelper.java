@@ -19,8 +19,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME = "progression_table";
     private static final String COL1 = "ID";
-    private static final String COL2 = "name";
-
+    private static final String COL2 = "Squat";
+    private static final String COL3 = "Bench";
+    private static final String COL4 = "Deadlift";
+    private static final String COL5 = "Row";
 
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 1);
@@ -29,7 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 +" TEXT)";
+                COL2 +"TEXT)";
         db.execSQL(createTable);
     }
 
@@ -45,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(COL2, "Date "+ date +" Lift: "+ item +"Kg"); // just some info to give with the date + lift for database
+        contentValues.put(COL2, "Date "+ date +" Sqaut: "+ item +"Kg"); // just some info to give with the date + lift for database
 
         Log.d(TAG, "addData: Adding " + item + " to " + TABLE_NAME);
 
@@ -74,14 +76,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * Return the last data from the database
      * @return
      */
-    public void getLastData(){
+    public String getLastData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT "+ COL2 + "FROM " + TABLE_NAME+
-                "ORDER BY " + COL1 + "DESC LIMIT 1";
-        db.execSQL(query);
-        //NOT WORKING HAVE TO FIND OUT HOW TO RETURN THE LAST DATA TO CALCULATE HOW MUCH THE USER NEEDS TO LIFT
+        String[] columns = new String[]{COL2};
+        Cursor data = db.query(TABLE_NAME, columns, null,null,null,null,null) ;
+        String result="";
+        int colTwo=data.getColumnIndex(COL2);
+
+        data.moveToLast();
+
+        result += data.getString(colTwo);
+
+        return result;
 
     }
+
+    //just a dummy function to read from database
+
     /**
      * Returns only the ID that matches the name passed in
      * @param name

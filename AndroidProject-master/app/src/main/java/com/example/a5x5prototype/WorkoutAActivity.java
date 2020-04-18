@@ -26,21 +26,24 @@ public class WorkoutAActivity extends AppCompatActivity {
 
 
 
+
+        //textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
+
         repsLeft = 5;
         setsLeft = 5;
-        textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
+
         addFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setsLeft--;
 
-                 textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
+                textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
 
-                //textView.setText(mDatabaseHelper.getLastData());
+
 
                  //mDatabaseHelper.getLastData();
 
-
+                //textView.setText(mDatabaseHelper.getLastData());
 
 
                 if(setsLeft==0){
