@@ -26,7 +26,6 @@ public class WorkoutAActivity extends AppCompatActivity {
 
 
 
-
         //textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
 
         repsLeft = 5;
@@ -37,7 +36,7 @@ public class WorkoutAActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setsLeft--;
 
-                textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
+                //textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
 
 
 

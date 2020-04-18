@@ -77,17 +77,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @return
      */
     public String getLastData(){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = new String[]{COL2};
         Cursor data = db.query(TABLE_NAME, columns, null,null,null,null,null) ;
+
+
+
         String result="";
         int colTwo=data.getColumnIndex(COL2);
-
         data.moveToLast();
+        result = data.getString(colTwo);
 
-        result += data.getString(colTwo);
 
         return result;
+
+    }
+    public Cursor getLast(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COL2 + "  FROM " + TABLE_NAME + " ORDER "+ " BY "+ " ID " + " DESC " + " LIMIT 1"; //actually not buggin with the right query but ye still not getting how i can use it in my activity
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        return cursor;
+
 
     }
 
