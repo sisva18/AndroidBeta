@@ -111,7 +111,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @param name
      * @return
      */
-    /*
+
     public Cursor getItemID(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT " + COL1 + " FROM " + TABLE_NAME +
@@ -119,7 +119,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query, null);
         return data;
     }
-    */
+
     /**
      * Updates the name field
      * @param newName
