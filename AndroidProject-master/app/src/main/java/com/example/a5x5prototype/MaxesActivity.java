@@ -13,9 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Calendar;
-import java.util.Date;
-
 public class MaxesActivity extends AppCompatActivity {
 
     DatabaseHelper mDatabaseHelper;
@@ -30,7 +27,6 @@ public class MaxesActivity extends AppCompatActivity {
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnViewData = (Button) findViewById(R.id.btnView);
         mDatabaseHelper = new DatabaseHelper(this);
-
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override

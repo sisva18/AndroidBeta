@@ -30,7 +30,7 @@ public class WorkoutAActivity extends AppCompatActivity {
         //textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
 
 
-        textView.setText(mDatabaseHelper.getLast().toString());
+
         addFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
