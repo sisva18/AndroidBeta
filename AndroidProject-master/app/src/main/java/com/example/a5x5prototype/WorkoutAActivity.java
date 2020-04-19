@@ -36,14 +36,14 @@ public class WorkoutAActivity extends AppCompatActivity {
 
         repsLeft = 5;
         setsLeft = 5;
-        //textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
 
 
-        ArrayList<Double> data = mDatabaseHelper.getLastEntry();
+
+        final ArrayList<Double> data = mDatabaseHelper.getLastEntry();
         Log.d(TAG, data.toString());
+        textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + data+"KG ");
 
 
-        textView.setText(data.toString());
 
 
         addFirst.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +51,7 @@ public class WorkoutAActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setsLeft--;
 
-               // textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
+                textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + data+"KG ");
 
 
 
