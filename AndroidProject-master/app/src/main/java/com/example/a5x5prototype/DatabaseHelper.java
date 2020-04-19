@@ -51,14 +51,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
 
     }*/
-    public ArrayList<String> getAll(){
-        ArrayList<String> data = new ArrayList<String>();
+    public ArrayList<Double> getLastEntry(){
+        ArrayList<Double> data = new ArrayList<Double>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(TABLE_NAME, new String[]{COL2},null, null, null, null, null);
-        String add = null;
+        Double add = null;
         while(cursor.moveToNext()){
-            add=cursor.getString(0);
-            data.add(add);
+            if(cursor.moveToLast()){
+                add=cursor.getDouble(0);
+                data.add(add);
+            }
         }
         cursor.close();
         return data;
@@ -69,8 +71,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String date = sdf.format(new Date()); //stringify and format new date = current date
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, "Date "+ date +" Squat: "+ item +"Kg");
-
+        contentValues.put(COL2, item);// only adding the item for now since I want to use it for calculations maybe figure out a way to add the date and so on later.
+        //contentValues.put(COL2, "Date: "+ date+ "Squat: " + item);
         Log.d(TAG, "addData: Adding " + item + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
