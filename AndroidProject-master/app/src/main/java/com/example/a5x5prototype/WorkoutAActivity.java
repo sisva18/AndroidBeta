@@ -1,8 +1,10 @@
 package com.example.a5x5prototype;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.DoubleStream;
 
 public class WorkoutAActivity extends AppCompatActivity {
     private static final String TAG = "WorkoutAActivity";
@@ -26,6 +30,7 @@ public class WorkoutAActivity extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +44,30 @@ public class WorkoutAActivity extends AppCompatActivity {
 
 
 
-        final ArrayList<Double> data = mDatabaseHelper.getLastEntry();
-        Log.d(TAG, data.toString());
-        textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + data+"KG ");
+        ArrayList<Double> data = mDatabaseHelper.getLastEntry();
+        /*
+         ArrayList<Double> data = mDatabaseHelper.getLastEntry();
 
 
+        data = new ArrayList<>(Arrays.asList(data));
+        double[] arr = data.stream().mapToDouble(Double::doubleValue).toArray();
+
+*/
+
+        double []arrX =  new double [data.size()];
+        for(int j=0; j<data.size();j++) {
+            double convert = data.get(j);
+            arrX[j] = convert;
+
+        }
+
+
+
+        textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+arrX[0]+"KG ");
+
+        for(double d : arrX){
+            Log.d(TAG, ""+d);
+        }
 
 
         addFirst.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +75,7 @@ public class WorkoutAActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setsLeft--;
 
-                textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + data+"KG ");
+               // textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) +"KG ");
 
 
 
