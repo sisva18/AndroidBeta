@@ -63,10 +63,11 @@ public class WorkoutAActivity extends AppCompatActivity {
 
 
 
-        textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+arrX[0]+"KG ");
+
 
         for(double d : arrX){
             Log.d(TAG, ""+d);
+            textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+d+"KG ");
         }
 
 
