@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -36,6 +37,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP IF TABLE EXISTS " + TABLE_NAME);
         onCreate(db);
+    }
+    /*
+    public String getMe(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        String result = "";
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToLast()){
+            result=cursor.getString(1);
+        }
+        cursor.close();
+        return result;
+
+    }*/
+    public ArrayList<String> getAll(){
+        ArrayList<String> data = new ArrayList<String>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, new String[]{COL2},null, null, null, null, null);
+        String add = null;
+        while(cursor.moveToNext()){
+            add=cursor.getString(0);
+            data.add(add);
+        }
+        cursor.close();
+        return data;
     }
 
     public boolean addData(String item) {
@@ -67,6 +93,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query, null);
         return data;
     }
+
+
 
     /**
      * Returns only the ID that matches the name passed in

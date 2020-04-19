@@ -4,19 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class WorkoutAActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
+public class WorkoutAActivity extends AppCompatActivity {
+    private static final String TAG = "WorkoutAActivity";
     private Button addFirst;
     private EditText editText2;
     private TextView textView;
     public int setsLeft, repsLeft;
-    private String test = null;
-    DatabaseHelper mDatabaseHelper;
+
+
+    DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,24 +39,25 @@ public class WorkoutAActivity extends AppCompatActivity {
         //textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
 
 
+        ArrayList<String> data = mDatabaseHelper.getAll();
+        Log.d(TAG, data.toString());
+
 
         addFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setsLeft--;
 
-                textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
+               // textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft));
 
 
 
-                 //mDatabaseHelper.getLastData();
 
-                //textView.setText(mDatabaseHelper.getLastData());
 
 
                 if(setsLeft==0){
                     textView.setText("Sqaut completed move on to next exercise");
-
+                    setsLeft = 0;
                 }
                 if(repsLeft<repsLeft){
                     //deload 10% database update
@@ -62,5 +72,7 @@ public class WorkoutAActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
+
 }

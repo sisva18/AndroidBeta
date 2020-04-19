@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*Boolean firstTime = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+      /*  Boolean firstTime = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("firstTime", true);
         if(firstTime){
             startActivity(new Intent(MainActivity.this, ActivityFirstTime.class));
@@ -25,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         getSharedPreferences("PREFERENCES", MODE_PRIVATE).edit()
-                .putBoolean("firstTime", false).commit();*///First time app open not working atm
+                .putBoolean("firstTime", false).commit();
+
+                //First time app open not working atm
+       */
 
         ((Button) findViewById(R.id.workouts)).setOnClickListener(new View.OnClickListener() {
             @Override
