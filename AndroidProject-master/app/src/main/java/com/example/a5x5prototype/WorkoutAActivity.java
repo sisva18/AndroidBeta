@@ -43,7 +43,7 @@ public class WorkoutAActivity extends AppCompatActivity {
         setsLeft = 5;
 
 
-
+    //getting last entry
         ArrayList<Double> data = mDatabaseHelper.getLastEntry();
         double []arrX =  new double [data.size()];
         for(int j=0; j<data.size();j++) {
@@ -51,26 +51,11 @@ public class WorkoutAActivity extends AppCompatActivity {
             arrX[j] = convert;
 
         }
+        //converting to double from Double
         for(double d : arrX){
             Log.d(TAG, ""+d);
             textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
         }
-        /*
-         ArrayList<Double> data = mDatabaseHelper.getLastEntry();
-
-
-        data = new ArrayList<>(Arrays.asList(data));
-        double[] arr = data.stream().mapToDouble(Double::doubleValue).toArray();
-
-*/
-
-
-
-
-
-
-
-
 
 
         addFirst.setOnClickListener(new View.OnClickListener() {
@@ -78,9 +63,10 @@ public class WorkoutAActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setsLeft--;
 
-               // textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) +"KG ");
-
-
+                for(double d : arrX){
+                    Log.d(TAG, ""+d);
+                    textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
+                }
 
 
 
@@ -106,3 +92,13 @@ public class WorkoutAActivity extends AppCompatActivity {
     }
 
 }
+
+
+
+
+
+  /*
+        ArrayList<Double> data = mDatabaseHelper.getLastEntry();
+        data = new ArrayList<>(Arrays.asList(data));
+        double[] arr = data.stream().mapToDouble(Double::doubleValue).toArray();
+*/
