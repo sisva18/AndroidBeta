@@ -43,7 +43,7 @@ public class WorkoutAActivity extends AppCompatActivity {
         setsLeft = 5;
 
 
-    //getting last entry
+         //getting last entry
         ArrayList<Double> data = mDatabaseHelper.getLastEntry();
         double []arrX =  new double [data.size()];
         for(int j=0; j<data.size();j++) {
