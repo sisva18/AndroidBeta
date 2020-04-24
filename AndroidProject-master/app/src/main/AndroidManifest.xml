@@ -14,13 +14,14 @@
         <activity android:name=".EditActivity" />
         <activity android:name=".WorkoutAActivity" />
         <activity android:name=".ListDataActivity" />
+
         <activity
             android:name=".MaxesActivity"
-            android:label="@string/title_activity_maxes"
+
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WorkoutsActivity"
-            android:label="@string/title_activity_workouts"
+
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
