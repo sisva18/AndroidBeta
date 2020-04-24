@@ -27,7 +27,7 @@ public class ActivityFirstTime extends AppCompatActivity {
             public void onClick(View v) {
                 String newEntry = firstTimer.getText().toString();
                 if (firstTimer.length() != 0) {
-                    mDatabaseHelper.addData(newEntry);
+                   // mDatabaseHelper.addData(newEntry);
                     firstTimer.setText("");
                     counter++;
                 } else {

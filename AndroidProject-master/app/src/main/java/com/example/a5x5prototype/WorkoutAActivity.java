@@ -24,8 +24,9 @@ public class WorkoutAActivity extends AppCompatActivity {
     private Button addFirst;
     private EditText editText2;
     private TextView textView;
-    public int setsLeft, repsLeft;
-
+    public int setsLeft, repsLeft, repsLeft1;
+    public double d;
+    public boolean failed=false;
 
     DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
 
@@ -38,9 +39,11 @@ public class WorkoutAActivity extends AppCompatActivity {
         addFirst = (Button) findViewById(R.id.addFirst);
         editText2 = (EditText) findViewById(R.id.editText2);
         textView = (TextView) findViewById(R.id.tView);
-
+        editText2 = (EditText) findViewById(R.id.editText2);
         repsLeft = 5;
+        repsLeft1 = 5;
         setsLeft = 5;
+
 
 
          //getting last entry
@@ -57,35 +60,60 @@ public class WorkoutAActivity extends AppCompatActivity {
             textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
         }
 
-
+        Log.d(TAG, mDatabaseHelper.getAll().toString() );
         addFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setsLeft--;
 
-                for(double d : arrX){
-                    Log.d(TAG, ""+d);
-                    textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
+
+
+                int currentReps = Integer.parseInt(editText2.getText().toString());
+                //if user fails take 10% of the remaining lifts in the given exercise
+                if (currentReps < repsLeft || failed==true && currentReps >=5 ){
+                    setsLeft--;
+                    repsLeft1--;
+                    failed = true;
+                    //if repsleft1 int is less than repsleft = 5 or if boolean failed = true and currentreps is 5 or bigger
+                    if(repsLeft1<repsLeft || failed==true && currentReps >=5){
+                        for(double d : arrX){
+                            Log.d(TAG, ""+currentReps);
+                            textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.7+"KG ");
+                        }
+
+                        if(setsLeft==0 || setsLeft <0){
+                            textView.setText("Sqaut failed try again next time!");
+                            for(double d : arrX){
+                                Log.d(TAG, ""+currentReps);
+                                //insert the same max
+                                mDatabaseHelper.updateLatestMax(d);
+                            }
+
+                        }
+                    }
+                }
+                //if user succeds given exercise it will increment the max with 2.5kg
+                if(currentReps >= 5 && failed == false ){
+                    setsLeft--;
+                    for(double d : arrX){
+                        Log.d(TAG, ""+currentReps);
+                        textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
+                    }
+
+                    if(setsLeft==0){
+                        for(double d : arrX){
+                            Log.d(TAG, ""+d);
+                            textView.setText("Completed the lift will ad 2.5kg to next workout!");
+                            // insert new max +2.5kg
+                            mDatabaseHelper.updateLatestMax(d+2.5);
+                            setsLeft = 0;
+                        }
+
+                    }
+
+
                 }
 
 
-
-
-                if(setsLeft==0){
-                    textView.setText("Sqaut completed move on to next exercise");
-                    setsLeft = 0;
-                }
-                if(repsLeft<repsLeft){
-                    //deload 10% database update
-                    //didnt make it
-
-                }
-                if(repsLeft>=6){
-                    //to many reps
-                }
-                if(repsLeft==repsLeft){
-                    //made the set
-                }
             }
         });
 

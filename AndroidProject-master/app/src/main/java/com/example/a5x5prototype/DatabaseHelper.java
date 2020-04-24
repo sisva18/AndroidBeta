@@ -11,6 +11,7 @@ import android.util.Log;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -38,19 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    /*
-    public String getMe(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_NAME;
-        String result = "";
-        Cursor cursor = db.rawQuery(query, null);
-        if(cursor.moveToLast()){
-            result=cursor.getString(1);
-        }
-        cursor.close();
-        return result;
 
-    }*/
     public ArrayList<Double> getLastEntry(){
         ArrayList<Double> data = new ArrayList<Double>();
         SQLiteDatabase db = this.getWritableDatabase();
@@ -66,11 +55,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public ArrayList<String> getAll(){
+        ArrayList<String> data = new ArrayList<String>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, new String[]{COL2},null, null, null, null, null);
+        String add = null;
+        while(cursor.moveToNext()){
+
+                add=cursor.getString(0);
+                data.add(add);
+
+        }
+        cursor.close();
+        return data;
+    }
+
 
 
     public boolean addData(String item) {
-        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");// date pattern
-        String date = sdf.format(new Date()); //stringify and format new date = current date
+       // SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");// date pattern
+      //w  String date = sdf.format(new Date()); //stringify and format new date = current date
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, item);// only adding the item for now since I want to use it for calculations maybe figure out a way to add the date and so on later.
@@ -80,6 +84,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         //if date as inserted incorrectly it will return -1
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean updateLatestMax(double newMax){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL2, newMax);
+        long result = db.insert(TABLE_NAME, null, contentValues);
         if (result == -1) {
             return false;
         } else {

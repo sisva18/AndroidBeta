@@ -1,5 +1,6 @@
 package com.example.a5x5prototype;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
@@ -50,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ((Button) findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // test1();
+            }
+        });
+
     }
 
     private void WorkoutIntent(){
@@ -57,13 +65,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void MaxesIntent(){
-        Intent intent = new Intent(this, MaxesActivity.class);
+        Intent intent = new Intent(this, ListDataActivity.class);
         startActivity(intent);
     }
     private void test(){
         Intent intent = new Intent(this, ActivityFirstTime.class);
         startActivity(intent);
     }
+   /* private void test1(){
+        Intent intent = new Intent(this, RecyclerActivity.class);
+        startActivity(intent);
+    }*/
 
     private void finishActivity(){
         finish();
