@@ -27,7 +27,7 @@ public class WorkoutAActivity extends AppCompatActivity {
     public int setsLeft, repsLeft, repsLeft1;
     public double d;
     public boolean failed=false;
-
+    public boolean dataWasSet=false;
     DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
 
 
@@ -85,7 +85,12 @@ public class WorkoutAActivity extends AppCompatActivity {
                             for(double d : arrX){
                                 Log.d(TAG, ""+currentReps);
                                 //insert the same max
-                                mDatabaseHelper.updateLatestMax(d);
+                                if(!dataWasSet)
+                                {
+                                    mDatabaseHelper.updateLatestMax(d);
+                                    dataWasSet=true;
+                                }
+
                             }
 
                         }
@@ -104,8 +109,13 @@ public class WorkoutAActivity extends AppCompatActivity {
                             Log.d(TAG, ""+d);
                             textView.setText("Completed the lift will ad 2.5kg to next workout!");
                             // insert new max +2.5kg
-                            mDatabaseHelper.updateLatestMax(d+2.5);
+
                             setsLeft = 0;
+                            if(!dataWasSet)
+                            {
+                                mDatabaseHelper.updateLatestMax(d+2.5);
+                                dataWasSet=true;
+                            }
                         }
 
                     }
