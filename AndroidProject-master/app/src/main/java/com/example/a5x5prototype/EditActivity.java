@@ -41,7 +41,7 @@ public class EditActivity extends AppCompatActivity {
         selectedID = receivedIntent.getIntExtra("id",-1); //NOTE: -1 is just the default value
 
         //now get the name we passed as an extra
-        selectedName = receivedIntent.getStringExtra("name");
+        selectedName = receivedIntent.getStringExtra("item");
 
         //set the text to show the current selected name
         editable_item.setText(selectedName);
@@ -53,7 +53,7 @@ public class EditActivity extends AppCompatActivity {
                 if(!item.equals("")){
                     mDatabaseHelper.updateName(item,selectedID,selectedName);
                 }else{
-                    toastMessage("You must enter a name");
+                    toastMessage("You must enter a max");
                 }
             }
         });
@@ -63,7 +63,7 @@ public class EditActivity extends AppCompatActivity {
             public void onClick(View view) {
                 mDatabaseHelper.deleteName(selectedID,selectedName);
                 editable_item.setText("");
-                toastMessage("removed from database");
+                toastMessage("removed from maxes");
                 finish();
                 refreshList();
 

@@ -41,7 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<Double> getLastEntry(){
-        ArrayList<Double> data = new ArrayList<Double>();
+        ArrayList<Double> data = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(TABLE_NAME, new String[]{COL2},null, null, null, null, null);
         Double add = null;
@@ -118,13 +118,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Returns only the ID that matches the name passed in
-     * @param name
+     * @param item
      * @return
      */
-    public Cursor getItemID(String name){
+    public Cursor getItemID(String item){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT " + COL1 + " FROM " + TABLE_NAME +
-                " WHERE " + COL2 + " = '" + name + "'";
+                " WHERE " + COL2 + " = '" + item + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
     }
