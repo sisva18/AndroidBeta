@@ -99,7 +99,7 @@ public class WorkoutAActivity extends AppCompatActivity {
                         textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
                     }
 
-                    if(setsLeft==0){
+                    if(setsLeft==0 || setsLeft <= 0){
                         for(double d : arrX){
                             Log.d(TAG, ""+d);
                             textView.setText("Completed the lift will ad 2.5kg to next workout!");
