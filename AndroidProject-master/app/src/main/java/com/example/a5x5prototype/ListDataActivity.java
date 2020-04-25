@@ -10,11 +10,14 @@ import android.database.Cursor;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -36,7 +39,7 @@ public class ListDataActivity extends AppCompatActivity {
         mDatabaseHelper = new DatabaseHelper(this);
 
         populateListView();
-
+        PopUpMenu();
 
     }
 
@@ -82,6 +85,38 @@ public class ListDataActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    public void PopUpMenu(){
+        Button btn = (Button) findViewById(R.id.exlist);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup = new PopupMenu(ListDataActivity.this, v);
+                popup.inflate(R.menu.pop_up);
+                popup.show();
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(ListDataActivity.this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        switch (item.getItemId()) {
+                            case R.id.m1:
+                                // do your code
+                                return true;
+                            case R.id.m2:
+                                // do your code
+                                return true;
+                            case R.id.m3:
+                                // do your code
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+            }
+        });
+
     }
 
     /**

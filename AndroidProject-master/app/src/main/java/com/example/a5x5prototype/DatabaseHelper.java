@@ -23,6 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL2 = "name";
 
 
+
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 1);
     }
@@ -108,8 +109,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @return
      */
     public Cursor getData(){
+
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
+
         Cursor data = db.rawQuery(query, null);
         return data;
     }
