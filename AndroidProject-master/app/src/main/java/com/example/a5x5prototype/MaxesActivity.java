@@ -54,7 +54,7 @@ public class MaxesActivity extends AppCompatActivity {
     }
 
     public void AddData(String newEntry) {
-        boolean insertData = mDatabaseHelper.addData(newEntry);
+        boolean insertData = mDatabaseHelper.addSquatData(newEntry);
 
         if (insertData) {
             toastMessage("Data Successfully Inserted!");

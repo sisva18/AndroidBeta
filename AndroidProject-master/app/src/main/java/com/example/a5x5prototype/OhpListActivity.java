@@ -1,14 +1,11 @@
 package com.example.a5x5prototype;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ListActivity;
-import android.os.Bundle;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,19 +19,16 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+public class OhpListActivity extends AppCompatActivity {
 
-
-public class ListDataActivity extends AppCompatActivity {
-    private static final String TAG = "ListDataActivity";
-
+    private static final String TAG = "OhpListActivity";
     DatabaseHelper mDatabaseHelper;
 
     private ListView mListView;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_layout);
+        setContentView(R.layout.list_layout_ohp);
         mListView = (ListView) findViewById(R.id.listView);
         mDatabaseHelper = new DatabaseHelper(this);
 
@@ -47,7 +41,7 @@ public class ListDataActivity extends AppCompatActivity {
         Log.d(TAG, "populateListView: Displaying data in the ListView.");
 
         //get the data and append to a list
-        Cursor data = mDatabaseHelper.getSquatData();
+        Cursor data = mDatabaseHelper.getOhpData();
         ArrayList<String> listData = new ArrayList<>();
         while(data.moveToNext()){
             //get the value from the database in column 1
@@ -65,14 +59,14 @@ public class ListDataActivity extends AppCompatActivity {
                 String name = adapterView.getItemAtPosition(i).toString();
                 Log.d(TAG, "onItemClick: You Clicked on " + name);
 
-                Cursor data = mDatabaseHelper.getSquatID(name); //get the id associated with that name
+                Cursor data = mDatabaseHelper.getOhpID(name); //get the id associated with that name
                 int itemID = -1;
                 while(data.moveToNext()){
                     itemID = data.getInt(0);
                 }
                 if(itemID > -1){
                     Log.d(TAG, "onItemClick: The ID is: " + itemID);
-                    Intent editScreenIntent = new Intent(ListDataActivity.this, EditActivity.class);
+                    Intent editScreenIntent = new Intent(OhpListActivity.this, EditActivity.class);
 
                     editScreenIntent.putExtra("id", itemID);
                     editScreenIntent.putExtra("name",name);
@@ -92,30 +86,24 @@ public class ListDataActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(ListDataActivity.this, v);
+                PopupMenu popup = new PopupMenu(OhpListActivity.this, v);
                 popup.inflate(R.menu.pop_up);
                 popup.show();
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(ListDataActivity.this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OhpListActivity.this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
                         switch (item.getItemId()) {
                             case R.id.m1:
                                 // do your code
-                                BenchList();
+
                                 return true;
                             case R.id.m2:
                                 // do your code
-                                OhpList();
-                                return false;
+                                return true;
                             case R.id.m3:
                                 // do your code
-                                RowList();
                                 return true;
-                            case R.id.m4:
-                                // do your code
-                                DeadliftList();
-                                return false;
                             default:
                                 return false;
                         }
@@ -133,24 +121,4 @@ public class ListDataActivity extends AppCompatActivity {
     private void toastMessage(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
-
-    private void BenchList(){
-        Intent intent = new Intent(this, BenchListActivity.class);
-        startActivity(intent);
-    }
-
-    private void OhpList(){
-        Intent intent = new Intent(this, OhpListActivity.class);
-        startActivity(intent);
-    }
-    private void RowList(){
-        Intent intent = new Intent(this, RowListActivity.class);
-        startActivity(intent);
-    }
-
-    private void DeadliftList(){
-        Intent intent = new Intent(this, DeadliftActivity.class);
-        startActivity(intent);
-    }
-
 }

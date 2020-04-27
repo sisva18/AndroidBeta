@@ -10,33 +10,96 @@ import android.widget.EditText;
 
 public class ActivityFirstTime extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper;
-    private Button btnAdd;
-    private EditText firstTimer;
-    MaxesActivity maxes;
+    private Button btnAddSqaut, btnAddBench, btnAddOhp, btnAddBRow, btnAddDeadlift;
+    private EditText squatMax, benchMax, ohpMax, bbRowMax, deadliftMax;
 
-    private int counter=0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_time);
-        btnAdd = (Button) findViewById(R.id.btnFirst);
-        firstTimer = (EditText) findViewById(R.id.editText5);
+        btnAddSqaut = (Button) findViewById(R.id.btnFirst);
+        squatMax = (EditText) findViewById(R.id.editText5);
+
+        btnAddBench = (Button) findViewById(R.id.btnFirst1);
+        benchMax = (EditText) findViewById(R.id.editText6);
+
+        btnAddOhp = (Button) findViewById(R.id.btnFirst2);
+        ohpMax = (EditText) findViewById(R.id.editText7);
+
+        btnAddBRow = (Button) findViewById(R.id.btnFirst3);
+        bbRowMax = (EditText) findViewById(R.id.editText8);
+
+        btnAddDeadlift = (Button) findViewById(R.id.btnFirst4);
+        deadliftMax = (EditText) findViewById(R.id.editText9);
+
         mDatabaseHelper = new DatabaseHelper(this);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+
+        btnAddSqaut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newEntry = firstTimer.getText().toString();
-                if (firstTimer.length() != 0) {
-                   // mDatabaseHelper.addData(newEntry);
-                    firstTimer.setText("");
-                    counter++;
-                } else {
-                    maxes.toastMessage("You must put something in the text field!");
+                String newEntry = squatMax.getText().toString();
+                if (squatMax.length() != 0) {
+                    mDatabaseHelper.addSquatData(newEntry);
+                    squatMax.setText("");
+
                 }
-                if(counter!=0){
-                    MainActivity();
-                    // its kinda working still have to figure out how to show it first when it is new user
+
+            }
+        });
+
+
+        btnAddBench.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newEntry = benchMax.getText().toString();
+                if (benchMax.length() != 0) {
+                    mDatabaseHelper.addBenchData(newEntry);
+                    benchMax.setText("");
+
                 }
+
+            }
+        });
+
+        btnAddOhp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newEntry = ohpMax.getText().toString();
+                if (ohpMax.length() != 0) {
+                    mDatabaseHelper.addOhpData(newEntry);
+                    ohpMax.setText("");
+
+                }
+
+            }
+        });
+
+        btnAddBRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newEntry = bbRowMax.getText().toString();
+                if (bbRowMax.length() != 0) {
+                    mDatabaseHelper.addRowData(newEntry);
+                    bbRowMax.setText("");
+
+                }
+
+            }
+        });
+
+        btnAddDeadlift.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newEntry = deadliftMax.getText().toString();
+                if (deadliftMax.length() != 0) {
+                    mDatabaseHelper.addDeadliftData(newEntry);
+                    deadliftMax.setText("");
+
+                }
+
             }
         });
 

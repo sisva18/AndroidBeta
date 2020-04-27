@@ -47,7 +47,7 @@ public class WorkoutAActivity extends AppCompatActivity {
 
 
          //getting last entry
-        ArrayList<Double> data = mDatabaseHelper.getLastEntry();
+        ArrayList<Double> data = mDatabaseHelper.getLastSquatEntry();
         double []arrX =  new double [data.size()];
         for(int j=0; j<data.size();j++) {
             double convert = data.get(j);
@@ -60,7 +60,7 @@ public class WorkoutAActivity extends AppCompatActivity {
             textView.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
         }
 
-        Log.d(TAG, mDatabaseHelper.getAll().toString() );
+        Log.d(TAG, mDatabaseHelper.getAllFromSquat().toString() );
         addFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,7 +87,7 @@ public class WorkoutAActivity extends AppCompatActivity {
                                 //insert the same max
                                 if(!dataWasSet)
                                 {
-                                    mDatabaseHelper.updateLatestMax(d);
+                                    mDatabaseHelper.UpdateSquatLatestMax(d);
                                     dataWasSet=true;
                                 }
 
@@ -113,7 +113,7 @@ public class WorkoutAActivity extends AppCompatActivity {
                             setsLeft = 0;
                             if(!dataWasSet)
                             {
-                                mDatabaseHelper.updateLatestMax(d+2.5);
+                                mDatabaseHelper.UpdateSquatLatestMax(d+2.5);
                                 dataWasSet=true;
                             }
                         }

@@ -9,19 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".DeadliftActivity"></activity>
+        <activity android:name=".RowListActivity" />
+        <activity android:name=".OhpListActivity" />
+        <activity android:name=".BenchListActivity" />
+        <activity android:name=".EditMaxesActivity" />
         <activity android:name=".ActivityFirstTime" />
         <activity android:name=".EditActivity" />
         <activity android:name=".WorkoutAActivity" />
         <activity android:name=".ListDataActivity" />
-
         <activity
             android:name=".MaxesActivity"
-
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WorkoutsActivity"
-
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
