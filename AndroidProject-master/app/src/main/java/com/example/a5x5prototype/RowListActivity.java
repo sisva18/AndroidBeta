@@ -87,7 +87,7 @@ public class RowListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 PopupMenu popup = new PopupMenu(RowListActivity.this, v);
-                popup.inflate(R.menu.pop_up);
+                popup.inflate(R.menu.pop_up3);
                 popup.show();
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
@@ -96,13 +96,19 @@ public class RowListActivity extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.m1:
                                 // do your code
-
+                                SquatList();
                                 return true;
                             case R.id.m2:
                                 // do your code
+                                BenchList();
                                 return true;
                             case R.id.m3:
                                 // do your code
+                                OhpList();
+                                return true;
+                            case R.id.m4:
+                                // do your code
+                                DeadliftList();
                                 return true;
                             default:
                                 return false;
@@ -120,5 +126,24 @@ public class RowListActivity extends AppCompatActivity {
      */
     private void toastMessage(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void SquatList(){
+        Intent intent = new Intent(this, ListDataActivity.class);
+        startActivity(intent);
+    }
+
+    private void BenchList(){
+        Intent intent = new Intent(this, BenchListActivity.class);
+        startActivity(intent);
+    }
+    private void OhpList(){
+        Intent intent = new Intent(this, OhpListActivity.class);
+        startActivity(intent);
+    }
+
+    private void DeadliftList(){
+        Intent intent = new Intent(this, DeadliftActivity.class);
+        startActivity(intent);
     }
 }
