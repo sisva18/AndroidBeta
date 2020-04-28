@@ -51,38 +51,55 @@ public class WorkoutAActivity extends AppCompatActivity {
         textViewBench = (TextView) findViewById(R.id.textView2);
 
         addDeadliftReps = (Button) findViewById(R.id.deadliftBtn);
-        benchEditText = (EditText) findViewById(R.id.editText4);
-        textViewBench = (TextView) findViewById(R.id.textView3);
+        deadliftEditText = (EditText) findViewById(R.id.editText4);
+        textViewDeadlift = (TextView) findViewById(R.id.textView3);
 
 
 
         repsLeft = 5;
         repsLeftSquat = 5;
         setsLeftSquat = 5;
-
-
+        repsBench = 5;
+        setsBench = 5;
+        deadliftReps = 5;
+        setsDeadlift = 5;
 
          //getting last entry from squat
         ArrayList<Double> dataSquat = mDatabaseHelper.getLastSquatEntry();
         double []arrSquat =  new double [dataSquat.size()];
         for(int j=0; j<dataSquat.size();j++) {
-            double convert = dataSquat.get(j);
-            arrSquat[j] = convert;
+            double convertSquat = dataSquat.get(j);
+            arrSquat[j] = convertSquat;
         }
         // getting last entry from bench
         ArrayList<Double> dataBench = mDatabaseHelper.getLastBenchEntry();
         double []arrBench =  new double [dataBench.size()];
         for(int j=0; j<dataBench.size();j++) {
-            double convert = dataBench.get(j);
-            arrBench[j] = convert;
+            double convertBench = dataBench.get(j);
+            arrBench[j] = convertBench;
         }
+        //last entry from deadssss
+        ArrayList<Double> dataDeads = mDatabaseHelper.getLastDeadliftEntry();
+        double []arrDeads =  new double [dataDeads.size()];
+        for(int j=0; j<dataDeads.size();j++) {
+            double convertDeads = dataDeads.get(j);
+            arrDeads[j] = convertDeads;
 
-
+        }
+        for(double d : arrDeads){
+            Log.d(TAG, ""+d);
+            textViewDeadlift.setText("Sets left: "+Integer.toString(setsDeadlift)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
+        }
+        for(double d : arrBench){
+            Log.d(TAG, ""+d);
+            textViewBench.setText("Sets left: "+Integer.toString(setsBench)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
+        }
         //converting to double from Double
         for(double d : arrSquat){
             Log.d(TAG, ""+d);
             textViewSquat.setText("Sets left: "+Integer.toString(setsLeftSquat)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
         }
+
 
         Log.d(TAG, mDatabaseHelper.getAllFromSquat().toString() );
         addSquatReps.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +168,7 @@ public class WorkoutAActivity extends AppCompatActivity {
             }
 
         });
-       /* addBenchReps.setOnClickListener(new View.OnClickListener() {
+       addBenchReps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -160,18 +177,18 @@ public class WorkoutAActivity extends AppCompatActivity {
                 int currentRepsBench = Integer.parseInt(benchEditText.getText().toString());
                 //if user fails take 10% of the remaining lifts in the given exercise
                 if (currentRepsBench < repsLeft || failedBench==true && currentRepsBench >=5 ){
-                    setsLeft--;
-                    repsLeftSquat--;
+                    setsBench--;
+                    repsBench--;
                     failedBench = true;
                     //if repsleft1 int is less than repsleft = 5 or if boolean failed = true and currentreps is 5 or bigger
-                    if(repsLeftSquat<repsLeft || failedBench && currentRepsBench >=5){
+                    if(repsBench<repsLeft || failedBench && currentRepsBench >=5){
                         for(double d : arrBench){
                             Log.d(TAG, ""+currentRepsBench);
-                            textViewSquat.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.7+"KG ");
+                            textViewBench.setText("Sets left: "+Integer.toString(setsBench)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.7+"KG ");
                         }
 
-                        if(setsLeft==0 || setsLeft <0){
-                            textViewSquat.setText("Sqaut failed try again next time!");
+                        if(setsBench==0 || setsBench <0){
+                            textViewBench.setText("Bench press failed try again next time!");
                             for(double d : arrBench){
                                 Log.d(TAG, ""+currentRepsBench);
                                 //insert the same max
@@ -188,19 +205,19 @@ public class WorkoutAActivity extends AppCompatActivity {
                 }
                 //if user succeds given exercise it will increment the max with 2.5kg
                 if(currentRepsBench >= 5 && failedBench == false ){
-                    setsLeft--;
+                    setsBench--;
                     for(double d : arrBench){
                         Log.d(TAG, ""+currentRepsBench);
-                        textViewSquat.setText("Sets left: "+Integer.toString(setsLeft)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
+                        textViewBench.setText("Sets left: "+Integer.toString(setsBench)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
                     }
 
-                    if(setsLeft==0 || setsLeft <= 0){
+                    if(setsBench==0 || setsBench <= 0){
                         for(double d : arrBench){
                             Log.d(TAG, ""+d);
-                            textViewSquat.setText("Completed the lift will ad 2.5kg to next workout!");
+                            textViewBench.setText("Completed the lift will ad 2.5kg to next workout!");
                             // insert new max +2.5kg
 
-                            setsLeft = 0;
+                            setsBench = 0;
                             if(!dataWasSetBench)
                             {
                                 mDatabaseHelper.UpdateBenchLatestMax(d+2.5);
@@ -216,7 +233,74 @@ public class WorkoutAActivity extends AppCompatActivity {
 
             }
 
-        });*/
+        });
+
+        addDeadliftReps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                int currentRepsDeads = Integer.parseInt(deadliftEditText.getText().toString());
+                //if user fails take 10% of the remaining lifts in the given exercise
+                if (currentRepsDeads < repsLeft || failedDeadlift && currentRepsDeads >=5 ){
+                    setsDeadlift--;
+                    deadliftReps--;
+                    failedDeadlift = true;
+                    //if repsleft1 int is less than repsleft = 5 or if boolean failed = true and currentreps is 5 or bigger
+                    if(deadliftReps<repsLeft || failedDeadlift && currentRepsDeads >=5){
+                        for(double d : arrDeads){
+                            Log.d(TAG, ""+currentRepsDeads);
+                            textViewDeadlift.setText("Sets left: "+Integer.toString(setsDeadlift)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.7+"KG ");
+                        }
+
+                        if(setsDeadlift==0 || setsDeadlift <0){
+                            textViewDeadlift.setText("Deadlift failed try again next time!");
+                            for(double d : arrBench){
+                                Log.d(TAG, ""+currentRepsDeads);
+                                //insert the same max
+                                if(!dataWasSetDeadlift)
+                                {
+                                    mDatabaseHelper.UpdateDeadliftLatestMax(d);
+                                    dataWasSetDeadlift=true;
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+                //if user succeds given exercise it will increment the max with 2.5kg
+                if(currentRepsDeads >= 5 && !failedDeadlift ){
+                    setsDeadlift--;
+                    for(double d : arrDeads){
+                        Log.d(TAG, ""+currentRepsDeads);
+                        textViewDeadlift.setText("Sets left: "+Integer.toString(setsDeadlift)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
+                    }
+
+                    if(setsDeadlift==0 || setsDeadlift <= 0){
+                        for(double d : arrDeads){
+                            Log.d(TAG, ""+d);
+                            textViewDeadlift.setText("Completed the lift will ad 2.5kg to next workout!");
+                            // insert new max +2.5kg
+
+                            setsDeadlift = 0;
+                            if(!dataWasSetDeadlift)
+                            {
+                                mDatabaseHelper.UpdateDeadliftLatestMax(d+2.5);
+                                dataWasSetDeadlift=true;
+                            }
+                        }
+
+                    }
+
+
+                }
+
+
+            }
+
+        });
 
 
     }

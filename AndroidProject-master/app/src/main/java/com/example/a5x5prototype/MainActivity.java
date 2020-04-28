@@ -52,12 +52,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        ((Button) findViewById(R.id.editMaxes)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test1();
-            }
-        });
+
 
     }
 
@@ -73,10 +68,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ActivityFirstTime.class);
         startActivity(intent);
     }
-    private void test1(){
-        Intent intent = new Intent(this, BenchListActivity.class);
-        startActivity(intent);
-    }
+
 
 
     private void finishActivity(){
