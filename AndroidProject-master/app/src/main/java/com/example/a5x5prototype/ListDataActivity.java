@@ -153,4 +153,9 @@ public class ListDataActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        startActivity(new Intent(ListDataActivity.this, MainActivity.class));
+    }
 }

@@ -146,4 +146,10 @@ public class RowListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DeadliftActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        startActivity(new Intent(RowListActivity.this, MainActivity.class));
+    }
 }

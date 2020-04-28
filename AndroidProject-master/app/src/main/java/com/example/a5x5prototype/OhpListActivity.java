@@ -146,4 +146,10 @@ public class OhpListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DeadliftActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        startActivity(new Intent(OhpListActivity.this, MainActivity.class));
+    }
 }

@@ -146,5 +146,10 @@ public class BenchListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DeadliftActivity.class);
         startActivity(intent);
     }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        startActivity(new Intent(BenchListActivity.this, MainActivity.class));
+    }
 
 }
