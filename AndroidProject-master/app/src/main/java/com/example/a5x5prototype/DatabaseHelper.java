@@ -79,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<Double> getLastSquatEntry(){
         ArrayList<Double> data = new ArrayList<>();
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_SQUAT, new String[]{COL2},null, null, null, null, null);
         Double add = null;
         while(cursor.moveToNext()){
@@ -93,7 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public ArrayList<Double> getLastBenchEntry(){
         ArrayList<Double> data = new ArrayList<>();
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_BENCHPRESS, new String[]{COL4},null, null, null, null, null);
         Double add = null;
         while(cursor.moveToNext()){
@@ -108,7 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<Double> getLastOhpEntry(){
         ArrayList<Double> data = new ArrayList<>();
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_OHP, new String[]{COL6},null, null, null, null, null);
         Double add = null;
         while(cursor.moveToNext()){
@@ -122,7 +122,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public ArrayList<Double> getLastRowEntry(){
         ArrayList<Double> data = new ArrayList<>();
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_BBROW, new String[]{COL8},null, null, null, null, null);
         Double add = null;
         while(cursor.moveToNext()){
@@ -136,7 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public ArrayList<Double> getLastDeadliftEntry(){
         ArrayList<Double> data = new ArrayList<>();
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_DEADLIFT, new String[]{COL10},null, null, null, null, null);
         Double add = null;
         while(cursor.moveToNext()){

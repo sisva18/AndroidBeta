@@ -24,7 +24,7 @@ public class WorkoutAActivity extends AppCompatActivity {
     private Button addSquatReps, addBenchReps, addDeadliftReps;
     private EditText squatEditText, benchEditText, deadliftEditText;
     private TextView textViewSquat, textViewBench, textViewDeadlift;
-    public int setsLeftSquat, repsLeft, repsLeftSquat, repsBench, setsBench, repsCheck, deadliftReps, setsDeadlift;
+    public int setsLeftSquat, repsLeft, repsLeftSquat, repsBench, setsBench, deadliftReps, setsDeadlift;
 
     public boolean failedSquat=false;
     public boolean dataWasSetSquat=false;
@@ -307,12 +307,3 @@ public class WorkoutAActivity extends AppCompatActivity {
 
 }
 
-
-
-
-
-  /*
-        ArrayList<Double> data = mDatabaseHelper.getLastEntry();
-        data = new ArrayList<>(Arrays.asList(data));
-        double[] arr = data.stream().mapToDouble(Double::doubleValue).toArray();
-*/
