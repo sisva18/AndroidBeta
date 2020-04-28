@@ -91,6 +91,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return data;
     }
+    public ArrayList<Double> getLastBenchEntry(){
+        ArrayList<Double> data = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_BENCHPRESS, new String[]{COL4},null, null, null, null, null);
+        Double add = null;
+        while(cursor.moveToNext()){
+            if(cursor.moveToLast()){
+                add=cursor.getDouble(0);
+                data.add(add);
+            }
+        }
+        cursor.close();
+        return data;
+    }
+
+    public ArrayList<Double> getLastOhpEntry(){
+        ArrayList<Double> data = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_OHP, new String[]{COL6},null, null, null, null, null);
+        Double add = null;
+        while(cursor.moveToNext()){
+            if(cursor.moveToLast()){
+                add=cursor.getDouble(0);
+                data.add(add);
+            }
+        }
+        cursor.close();
+        return data;
+    }
+    public ArrayList<Double> getLastRowEntry(){
+        ArrayList<Double> data = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_BBROW, new String[]{COL8},null, null, null, null, null);
+        Double add = null;
+        while(cursor.moveToNext()){
+            if(cursor.moveToLast()){
+                add=cursor.getDouble(0);
+                data.add(add);
+            }
+        }
+        cursor.close();
+        return data;
+    }
+    public ArrayList<Double> getLastDeadliftEntry(){
+        ArrayList<Double> data = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_DEADLIFT, new String[]{COL10},null, null, null, null, null);
+        Double add = null;
+        while(cursor.moveToNext()){
+            if(cursor.moveToLast()){
+                add=cursor.getDouble(0);
+                data.add(add);
+            }
+        }
+        cursor.close();
+        return data;
+    }
 
     public ArrayList<String> getAllFromSquat(){
         ArrayList<String> data = new ArrayList<String>();
@@ -200,6 +257,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, newMax);
         long result = db.insert(TABLE_SQUAT, null, contentValues);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean UpdateBenchLatestMax(double newMax){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL4, newMax);
+        long result = db.insert(TABLE_BENCHPRESS, null, contentValues);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean UpdateOhpLatestMax(double newMax){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL6, newMax);
+        long result = db.insert(TABLE_OHP, null, contentValues);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean UpdateRowLatestMax(double newMax){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL8, newMax);
+        long result = db.insert(TABLE_BBROW, null, contentValues);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean UpdateDeadliftLatestMax(double newMax){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL10, newMax);
+        long result = db.insert(TABLE_DEADLIFT, null, contentValues);
         if (result == -1) {
             return false;
         } else {
