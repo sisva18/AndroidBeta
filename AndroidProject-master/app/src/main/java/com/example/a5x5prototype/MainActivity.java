@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void MaxesIntent(){
-        Intent intent = new Intent(this, MaxesActivity.class);
+        Intent intent = new Intent(this, ListDataActivity.class);
         startActivity(intent);
     }
     private void test(){
