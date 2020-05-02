@@ -4,12 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.ArrayList;
 
 public class ActivityFirstTime extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper;
@@ -45,22 +42,8 @@ public class ActivityFirstTime extends AppCompatActivity {
             public void onClick(View v) {
                 String newEntry = squatMax.getText().toString();
                 if (squatMax.length() != 0) {
-                   /* mDatabaseHelper.addSquatData(newEntry);
-                    //getting last entry from squat
-                    ArrayList<Double> dataSquat = mDatabaseHelper.getLastSquatEntry();
-                    double []arrSquat =  new double [dataSquat.size()];
-                    for(int j=0; j<dataSquat.size();j++) {
-                        double convertSquat = dataSquat.get(j);
-                        arrSquat[j] = convertSquat;
-                    }
-                    for(double d : arrSquat){
-                       // Log.d(TAG, ""+d);
-                        d=(int)
-                        if(d < d)
-                        {
+                    mDatabaseHelper.addSquatData(newEntry);
 
-                        }
-                    }*/
                     squatMax.setText("");
 
                 }
