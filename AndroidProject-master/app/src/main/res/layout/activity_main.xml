@@ -1,56 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmenthome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@drawable/abc">
 
-    <TextView
-        android:id="@+id/textView"
+    <RelativeLayout
+        android:layout_width="346dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="35dp">
+
+        <TextView
+            android:id="@+id/tx1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello again!"
+            android:textColor="#fff"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tx1"
+            android:layout_marginTop="6dp"
+            android:text="3items"
+            android:textColor="#fff" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/user" />
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        app:cardCornerRadius="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/workout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="WORKOUT"
+                android:layout_margin="20dp"
+                android:textColor="#0F0404"
+                android:textSize="40dp" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/paper"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5x5 Strength app"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221" />
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:columnCount="2"
+        android:rowCount="1"
+        android:layout_margin="10dp">
 
-    <Button
-        android:id="@+id/workouts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Workouts"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="0"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_margin="25dp"
+            app:cardCornerRadius="12dp">
 
-    <Button
-        android:id="@+id/maxes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Maxes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+            <LinearLayout
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-    <Button
-        android:id="@+id/testFirst"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="First Time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.613" />
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/pop_up"-->
+                <!--                    android:layout_width="88dp"-->
+                <!--                    android:layout_height="88dp"-->
+                <!--                    android:src="@drawable/ic_launcher_foreground" />-->
 
+                <TextView
+                    android:id="@+id/FirstT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="First\nTime"
+                    android:textColor="#0F0404"
+                    android:textSize="40dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="0"
+            android:layout_margin="25dp"
+            android:layout_marginLeft="10dp"
+            app:cardCornerRadius="12dp">
+
+            <LinearLayout
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/pop_u"-->
+                <!--                    android:layout_width="88dp"-->
+                <!--                    android:layout_height="88dp"-->
+                <!--                    android:src="@drawable/ic_launcher_foreground" />-->
+
+                <TextView
+                    android:id="@+id/Maxes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Maxes"
+                    android:textColor="#0F0F0F"
+                    android:textSize="40dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </GridLayout>
+
+</LinearLayout>

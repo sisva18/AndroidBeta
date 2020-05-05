@@ -1,57 +1,45 @@
 package com.example.a5x5prototype;
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView workOut, maxes, firstTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-      /*  Boolean firstTime = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
-                .getBoolean("firstTime", true);
-        if(firstTime){
-            startActivity(new Intent(MainActivity.this, ActivityFirstTime.class));
-            Toast.makeText(MainActivity.this, "First Run", Toast.LENGTH_LONG)
-                    .show();
-        }
 
-        getSharedPreferences("PREFERENCES", MODE_PRIVATE).edit()
-                .putBoolean("firstTime", false).commit();
-
-                //First time app open not working atm
-       */
-
-        ((Button) findViewById(R.id.workouts)).setOnClickListener(new View.OnClickListener() {
+        workOut = (TextView)findViewById(R.id.workout);
+        workOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 WorkoutIntent();
             }
         });
-        ((Button) findViewById(R.id.maxes)).setOnClickListener(new View.OnClickListener() {
+
+        maxes = (TextView)findViewById(R.id.Maxes);
+        maxes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MaxesIntent();
             }
         });
 
-        ((Button) findViewById(R.id.testFirst)).setOnClickListener(new View.OnClickListener() {
+        firstTime = (TextView)findViewById(R.id.FirstT);
+        firstTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 test();
             }
         });
-
-
 
 
     }
@@ -69,9 +57,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
-    private void finishActivity(){
-        finish();
-    }
 }
