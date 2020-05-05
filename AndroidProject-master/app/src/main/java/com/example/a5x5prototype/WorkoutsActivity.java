@@ -18,7 +18,7 @@ import android.widget.Button;
 
 public class WorkoutsActivity extends AppCompatActivity {
 
-
+    DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +31,22 @@ public class WorkoutsActivity extends AppCompatActivity {
             }
         });
 
+        ((Button) findViewById(R.id.deleteAll)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delete();
+            }
+        });
+
     }
 
     private void WorkoutIntent(){
         Intent intent=new Intent(this, WorkoutAActivity.class);
         startActivity(intent);
+    }
+
+    private void delete(){
+        mDatabaseHelper.deletaALl();
     }
 
 }
