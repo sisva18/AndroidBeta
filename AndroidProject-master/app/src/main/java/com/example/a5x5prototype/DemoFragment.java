@@ -34,8 +34,11 @@ public class DemoFragment extends Fragment {
 
     DatabaseHelper mDatabaseHelper;
     private TextView txtView, txtViewSet, txtFeedBack;
-    private Button setOne;
+    private Button setOne, setCompleted;
     private int counter = 6;
+    private int setsLeft;
+
+    private boolean setOneCompleted = false;
     private String convert;
     public DemoFragment() {
         // Required empty public constructor
@@ -45,7 +48,7 @@ public class DemoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        setsLeft = 5;
         DatabaseHelper db = new DatabaseHelper(getActivity());
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_demo, container, false);
@@ -54,13 +57,16 @@ public class DemoFragment extends Fragment {
         txtFeedBack=view.findViewById(R.id.txt_feedBack);
 
         setOne = view.findViewById(R.id.buttonSet1);
-        txtView.setText("Squat: 5x5: "+db.getLastSquatEntryDouble()*0.8+"KG");
+        txtView.setText("Squat: "+setsLeft+"x5: "+db.getLastSquatEntryDouble()*0.8+"KG");
+
+
+
         //txtViewSet.setText("Sets remaining 5");
 
         setOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(counter<=0){
+                if(counter<=0 ){
                     counter = 6;
                 }
                 if(counter>0) {
@@ -73,12 +79,15 @@ public class DemoFragment extends Fragment {
                 {
                     txtFeedBack.setText("Congratulations, complete the next 4 sets to increment max!");
                 }
-                if(counter < 5)
+                if(counter < 5 )
                 {
                     txtFeedBack.setText("Lift failed, try again next time!");
                 }
+                setOneCompleted = true;
             }
         });
+
+
         return view;
     }
 
