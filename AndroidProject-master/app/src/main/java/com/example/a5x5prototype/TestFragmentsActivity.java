@@ -14,6 +14,7 @@ public class TestFragmentsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test_fragments);
         viewPager = findViewById(R.id.pager);
         adapter = new FragmentDemoAdapter(getSupportFragmentManager());
+
         viewPager.setAdapter(adapter);
 
     }

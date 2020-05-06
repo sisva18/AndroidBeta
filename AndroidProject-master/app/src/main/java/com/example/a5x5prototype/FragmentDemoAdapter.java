@@ -1,5 +1,6 @@
 package com.example.a5x5prototype;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,10 +8,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import java.util.ArrayList;
+
 public class FragmentDemoAdapter extends FragmentPagerAdapter {
+
+    DatabaseHelper mDatabaseHelper;
     public FragmentDemoAdapter(@NonNull FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+
     }
+
+
 
     @NonNull
     @Override
@@ -21,7 +29,9 @@ public class FragmentDemoAdapter extends FragmentPagerAdapter {
         bundle.putString("message", "hello from page:"+position);
         demoFragment.setArguments(bundle);
         return demoFragment;
+
     }
+
 
     @Override
     public int getCount() {

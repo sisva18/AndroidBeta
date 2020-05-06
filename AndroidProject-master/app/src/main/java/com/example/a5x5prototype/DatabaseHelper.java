@@ -91,6 +91,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return data;
     }
+    public double getLastSquatEntryDouble(){
+        double data = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_SQUAT, new String[]{COL2},null, null, null, null, null);
+        Double add = null;
+        while(cursor.moveToNext()){
+            if(cursor.moveToLast()){
+
+                data =cursor.getDouble(0);
+            }
+        }
+        cursor.close();
+        return data;
+    }
     public ArrayList<Double> getLastBenchEntry(){
         ArrayList<Double> data = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
