@@ -26,6 +26,8 @@ public class WorkoutAActivity extends AppCompatActivity {
     private TextView textViewSquat, textViewBench, textViewDeadlift;
     public int setsLeftSquat, repsLeft, repsLeftSquat, repsBench, setsBench, deadliftReps, setsDeadlift;
 
+    public double squatLift;
+
     public boolean failedSquat=false;
     public boolean dataWasSetSquat=false;
     public boolean failedBench = false;
@@ -98,6 +100,7 @@ public class WorkoutAActivity extends AppCompatActivity {
         for(double d : arrSquat){
             Log.d(TAG, ""+d);
             textViewSquat.setText("Sets left: "+Integer.toString(setsLeftSquat)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
+
         }
 
 
