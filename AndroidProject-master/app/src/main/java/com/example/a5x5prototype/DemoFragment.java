@@ -55,7 +55,7 @@ public class DemoFragment extends Fragment {
     private String convertFour;
     private String convertFive;
 
-    private boolean dataWasSet = false;
+    public boolean dataWasSet = false;
 
     public DemoFragment() {
         // Required empty public constructor

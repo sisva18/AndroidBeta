@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.stream.DoubleStream;
 
 public class WorkoutAActivity extends AppCompatActivity {
-    private static final String TAG = "WorkoutAActivity";
+    /*private static final String TAG = "WorkoutAActivity";
     private Button addSquatReps, addBenchReps, addDeadliftReps;
     private EditText squatEditText, benchEditText, deadliftEditText;
     private TextView textViewSquat, textViewBench, textViewDeadlift;
@@ -306,7 +306,7 @@ public class WorkoutAActivity extends AppCompatActivity {
         });
 
 
-    }
+    }*/
 
 }
 

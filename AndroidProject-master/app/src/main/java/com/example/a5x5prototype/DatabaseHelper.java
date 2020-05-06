@@ -95,7 +95,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         double data = 0;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_SQUAT, new String[]{COL2},null, null, null, null, null);
-        Double add = null;
+
         while(cursor.moveToNext()){
             if(cursor.moveToLast()){
 
@@ -105,44 +105,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return data;
     }
-    public ArrayList<Double> getLastBenchEntry(){
-        ArrayList<Double> data = new ArrayList<>();
+    public double getLastBenchEntry(){
+        double data = 0;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_BENCHPRESS, new String[]{COL4},null, null, null, null, null);
-        Double add = null;
+
         while(cursor.moveToNext()){
             if(cursor.moveToLast()){
-                add=cursor.getDouble(0);
-                data.add(add);
+                data=cursor.getDouble(0);
+
             }
         }
         cursor.close();
         return data;
     }
 
-    public ArrayList<Double> getLastOhpEntry(){
-        ArrayList<Double> data = new ArrayList<>();
+    public double getLastOhpEntry(){
+        double data = 0;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_OHP, new String[]{COL6},null, null, null, null, null);
         Double add = null;
         while(cursor.moveToNext()){
             if(cursor.moveToLast()){
-                add=cursor.getDouble(0);
-                data.add(add);
+                data=cursor.getDouble(0);
             }
         }
         cursor.close();
         return data;
     }
-    public ArrayList<Double> getLastRowEntry(){
-        ArrayList<Double> data = new ArrayList<>();
+    public double getLastRowEntry(){
+        double data = 0;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_BBROW, new String[]{COL8},null, null, null, null, null);
         Double add = null;
         while(cursor.moveToNext()){
             if(cursor.moveToLast()){
-                add=cursor.getDouble(0);
-                data.add(add);
+                data=cursor.getDouble(0);
+
             }
         }
         cursor.close();

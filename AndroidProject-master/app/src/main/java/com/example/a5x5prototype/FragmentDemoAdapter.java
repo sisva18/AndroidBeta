@@ -11,7 +11,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 
 public class FragmentDemoAdapter extends FragmentPagerAdapter {
-
+    final int PAGE_COUNT = 3;
+    Context context;
     DatabaseHelper mDatabaseHelper;
     public FragmentDemoAdapter(@NonNull FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -24,17 +25,23 @@ public class FragmentDemoAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         DemoFragment demoFragment = new DemoFragment();
-        Bundle bundle = new Bundle();
-        position = position +1;
-        bundle.putString("message", "hello from page:"+position);
-        demoFragment.setArguments(bundle);
-        return demoFragment;
-
+        BenchFragment benchFragment = new BenchFragment();
+        BarbellRowFragment bbRowFragment = new BarbellRowFragment();
+        switch (position)
+        {
+            case 0: return demoFragment;
+            case 1:return benchFragment;
+            case 2:return bbRowFragment;
+            default:return demoFragment;
+        }
     }
+
+
+
 
 
     @Override
     public int getCount() {
-        return 1;
+        return 3;
     }
 }
