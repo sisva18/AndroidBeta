@@ -20,11 +20,13 @@ import java.util.List;
 import java.util.stream.DoubleStream;
 
 public class WorkoutAActivity extends AppCompatActivity {
-    private static final String TAG = "WorkoutAActivity";
+    /*private static final String TAG = "WorkoutAActivity";
     private Button addSquatReps, addBenchReps, addDeadliftReps;
     private EditText squatEditText, benchEditText, deadliftEditText;
     private TextView textViewSquat, textViewBench, textViewDeadlift;
     public int setsLeftSquat, repsLeft, repsLeftSquat, repsBench, setsBench, deadliftReps, setsDeadlift;
+
+    public double squatLift;
 
     public boolean failedSquat=false;
     public boolean dataWasSetSquat=false;
@@ -98,6 +100,7 @@ public class WorkoutAActivity extends AppCompatActivity {
         for(double d : arrSquat){
             Log.d(TAG, ""+d);
             textViewSquat.setText("Sets left: "+Integer.toString(setsLeftSquat)+" Reps : "+Integer.toString(repsLeft) + " "+d*0.8+"KG ");
+
         }
 
 
@@ -303,7 +306,7 @@ public class WorkoutAActivity extends AppCompatActivity {
         });
 
 
-    }
+    }*/
 
 }
 

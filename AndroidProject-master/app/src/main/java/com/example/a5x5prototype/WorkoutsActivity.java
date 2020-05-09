@@ -37,11 +37,21 @@ public class WorkoutsActivity extends AppCompatActivity {
                 delete();
             }
         });
+        ((Button) findViewById(R.id.fragmentTest)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Frags();
+            }
+        });
 
     }
 
     private void WorkoutIntent(){
         Intent intent=new Intent(this, WorkoutAActivity.class);
+        startActivity(intent);
+    }
+    private void Frags(){
+        Intent intent=new Intent(this, TestFragmentsActivity.class);
         startActivity(intent);
     }
 
