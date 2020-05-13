@@ -2,6 +2,7 @@ package com.example.a5x5prototype;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +36,7 @@ public class ActivityFirstTime extends AppCompatActivity {
         btnAddDeadlift = (Button) findViewById(R.id.btnFirst4);
         deadliftMax = (EditText) findViewById(R.id.editText9);
 
-        mDatabaseHelper = new DatabaseHelper(this);
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
 
 
         btnAddSqaut.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +45,8 @@ public class ActivityFirstTime extends AppCompatActivity {
                 Double newEntry = Double.parseDouble(squatMax.getText().toString());
                 if (squatMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        mDatabaseHelper.addSquatData(newEntry.toString());
+                        //mDatabaseHelper.addSquatData(newEntry.toString());
+                        mDatabaseHelper.addEntry(newEntry.toString(), "name", "Squat");
                         squatMax.setText("");
                     } else {
                         Toast.makeText(ActivityFirstTime.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
@@ -54,14 +56,14 @@ public class ActivityFirstTime extends AppCompatActivity {
             }
         });
 
-
         btnAddBench.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Double newEntry = Double.parseDouble(benchMax.getText().toString());
                 if (benchMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        mDatabaseHelper.addBenchData(newEntry.toString());
+                        //mDatabaseHelper.addBenchData(newEntry.toString());
+                        mDatabaseHelper.addEntry(newEntry.toString(), "name", "Bench");
                         benchMax.setText("");
                     } else {
                         Toast.makeText(ActivityFirstTime.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
@@ -78,7 +80,8 @@ public class ActivityFirstTime extends AppCompatActivity {
                 Double newEntry = Double.parseDouble(ohpMax.getText().toString());
                 if (ohpMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        mDatabaseHelper.addOhpData(newEntry.toString());
+                        //mDatabaseHelper.addOhpData(newEntry.toString());
+                        mDatabaseHelper.addEntry(newEntry.toString(), "name", "OHP");
                         ohpMax.setText("");
                     } else {
                     Toast.makeText(ActivityFirstTime.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
@@ -94,7 +97,8 @@ public class ActivityFirstTime extends AppCompatActivity {
                 Double newEntry = Double.parseDouble(bbRowMax.getText().toString());
                 if (bbRowMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        mDatabaseHelper.addRowData(newEntry.toString());
+                        //mDatabaseHelper.addRowData(newEntry.toString());
+                        mDatabaseHelper.addEntry(newEntry.toString(), "name", "BBRow");
                         bbRowMax.setText("");
                     } else {
                         Toast.makeText(ActivityFirstTime.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
@@ -110,7 +114,8 @@ public class ActivityFirstTime extends AppCompatActivity {
                 Double newEntry = Double.parseDouble(deadliftMax.getText().toString());
                 if (deadliftMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        mDatabaseHelper.addDeadliftData(newEntry.toString());
+                        //mDatabaseHelper.addDeadliftData(newEntry.toString());
+                        mDatabaseHelper.addEntry(newEntry.toString(), "name", "Deadlift");
                         deadliftMax.setText("");
                     } else {
                         Toast.makeText(ActivityFirstTime.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
@@ -121,9 +126,6 @@ public class ActivityFirstTime extends AppCompatActivity {
         });
 
     }
-
-
-
 
     private void MainActivity(){
         Intent intent=new Intent(this, MainActivity.class);

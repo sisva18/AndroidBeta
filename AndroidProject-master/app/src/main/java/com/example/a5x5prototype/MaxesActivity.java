@@ -27,14 +27,14 @@ public class MaxesActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.editText);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnViewData = (Button) findViewById(R.id.btnView);
-        mDatabaseHelper = new DatabaseHelper(this);
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String newEntry = editText.getText().toString();
                 if (editText.length() != 0) {
-                    AddData(newEntry);
+                    //AddData(newEntry);
                     editText.setText("");
                 } else {
                     toastMessage("You must put something in the text field!");
@@ -52,17 +52,17 @@ public class MaxesActivity extends AppCompatActivity {
         });
 
     }
-
+    /*
     public void AddData(String newEntry) {
-        boolean insertData = mDatabaseHelper.addSquatData(newEntry);
-
+        //boolean insertData = mDatabaseHelper.addSquatData(newEntry);
+        boolean insertData = mDatabaseHelper.addItemTest(newEntry);
         if (insertData) {
             toastMessage("Data Successfully Inserted!");
         } else {
             toastMessage("Something went wrong");
         }
     }
-
+    */
     /**
      * customizable toast
      * @param message

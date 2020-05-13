@@ -36,7 +36,7 @@ public class ListDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_layout);
         mListView = (ListView) findViewById(R.id.listView);
-        mDatabaseHelper = new DatabaseHelper(this);
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
 
         populateListView();
         PopUpMenu();

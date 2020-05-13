@@ -30,7 +30,7 @@ public class DeadliftActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_layout_deadlift);
         mListView = (ListView) findViewById(R.id.listView);
-        mDatabaseHelper = new DatabaseHelper(this);
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
 
         populateListView();
         PopUpMenu();

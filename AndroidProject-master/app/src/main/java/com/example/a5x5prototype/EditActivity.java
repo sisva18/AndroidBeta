@@ -32,7 +32,7 @@ public class EditActivity extends AppCompatActivity {
         btnSave = (Button) findViewById(R.id.btnSave);
         btnDelete = (Button) findViewById(R.id.btnDelete);
         editable_item = (EditText) findViewById(R.id.editable_item);
-        mDatabaseHelper = new DatabaseHelper(this);
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
 
         //get the intent extra from the ListDataActivity
         Intent receivedIntent = getIntent();

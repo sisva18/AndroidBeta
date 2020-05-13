@@ -34,7 +34,7 @@ public class WorkoutAActivity extends AppCompatActivity {
     public boolean dataWasSetDeadlift = false;
 
 
-    DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
+    DatabaseHelper mDatabaseHelper = DatabaseHelper.getInstance(this);
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
