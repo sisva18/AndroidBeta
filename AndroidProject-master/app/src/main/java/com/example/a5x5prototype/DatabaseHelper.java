@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DatabaseHelper";
     public static String PROGRESSION_OVERALL = "ProgressionData";// using this to initiate the whole database static so only one instance of database
-    private static final String TABLE_SQUAT = "Sqaut";
+    private static final String TABLE_SQUAT = "Squat";
     private static final String COL1 = "ID";
     private static final String COL2 = "name";
 
@@ -77,24 +77,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<Double> getLastSquatEntry(){
-        ArrayList<Double> data = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_SQUAT, new String[]{COL2},null, null, null, null, null);
-        Double add = null;
-        while(cursor.moveToNext()){
-            if(cursor.moveToLast()){
-                add=cursor.getDouble(0);
-                data.add(add);
-            }
-        }
-        cursor.close();
-        return data;
-    }
-    public double getLastSquatEntryDouble(){
+    public double getLastEntry(String table, String col) {
         double data = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_SQUAT, new String[]{COL2},null, null, null, null, null);
+        Cursor cursor = db.query(table, new String[]{col},null, null, null, null, null);
 
         while(cursor.moveToNext()){
             if(cursor.moveToLast()){
@@ -105,79 +91,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return data;
     }
-    public double getLastBenchEntry(){
-        double data = 0;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_BENCHPRESS, new String[]{COL4},null, null, null, null, null);
-
-        while(cursor.moveToNext()){
-            if(cursor.moveToLast()){
-                data=cursor.getDouble(0);
-
-            }
-        }
-        cursor.close();
-        return data;
-    }
-
-    public double getLastOhpEntry(){
-        double data = 0;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_OHP, new String[]{COL6},null, null, null, null, null);
-        Double add = null;
-        while(cursor.moveToNext()){
-            if(cursor.moveToLast()){
-                data=cursor.getDouble(0);
-            }
-        }
-        cursor.close();
-        return data;
-    }
-    public double getLastRowEntry(){
-        double data = 0;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_BBROW, new String[]{COL8},null, null, null, null, null);
-        Double add = null;
-        while(cursor.moveToNext()){
-            if(cursor.moveToLast()){
-                data=cursor.getDouble(0);
-
-            }
-        }
-        cursor.close();
-        return data;
-    }
-    public ArrayList<Double> getLastDeadliftEntry(){
-        ArrayList<Double> data = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_DEADLIFT, new String[]{COL10},null, null, null, null, null);
-        Double add = null;
-        while(cursor.moveToNext()){
-            if(cursor.moveToLast()){
-                add=cursor.getDouble(0);
-                data.add(add);
-            }
-        }
-        cursor.close();
-        return data;
-    }
-
-    public ArrayList<String> getAllFromSquat(){
-        ArrayList<String> data = new ArrayList<String>();
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(TABLE_SQUAT, new String[]{COL2},null, null, null, null, null);
-        String add = null;
-        while(cursor.moveToNext()){
-
-                add=cursor.getString(0);
-                data.add(add);
-
-        }
-        cursor.close();
-        return data;
-    }
-
-
 
     public boolean addSquatData(String item) {
         // SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");// date pattern
@@ -263,66 +176,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
-
-    public boolean UpdateSquatLatestMax(double newMax){
+    public void UpdateLatestMax(double value, String table, String col){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, newMax);
-        long result = db.insert(TABLE_SQUAT, null, contentValues);
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean UpdateBenchLatestMax(double newMax){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL4, newMax);
-        long result = db.insert(TABLE_BENCHPRESS, null, contentValues);
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean UpdateOhpLatestMax(double newMax){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL6, newMax);
-        long result = db.insert(TABLE_OHP, null, contentValues);
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean UpdateRowLatestMax(double newMax){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL8, newMax);
-        long result = db.insert(TABLE_BBROW, null, contentValues);
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean UpdateDeadliftLatestMax(double newMax){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL10, newMax);
-        long result = db.insert(TABLE_DEADLIFT, null, contentValues);
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        contentValues.put(col, value);
+        long result = db.insert(table, null, contentValues);
     }
 
     /**

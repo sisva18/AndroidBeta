@@ -1,14 +1,11 @@
 package com.example.a5x5prototype;
 
 import android.content.Context;
-import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-
-import java.util.ArrayList;
 
 public class FragmentDemoAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 3;
@@ -24,7 +21,7 @@ public class FragmentDemoAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        DemoFragment demoFragment = new DemoFragment();
+        SquatFragment demoFragment = new SquatFragment();
         BenchFragment benchFragment = new BenchFragment();
         BarbellRowFragment bbRowFragment = new BarbellRowFragment();
         switch (position)

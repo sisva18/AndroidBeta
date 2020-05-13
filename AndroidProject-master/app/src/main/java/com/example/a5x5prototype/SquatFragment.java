@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DemoFragment extends Fragment {
+public class SquatFragment extends Fragment {
 
 
     private static final String TAG = "DemoFragment";
@@ -57,7 +57,7 @@ public class DemoFragment extends Fragment {
 
     public boolean dataWasSet = false;
 
-    public DemoFragment() {
+    public SquatFragment() {
         // Required empty public constructor
     }
 
@@ -75,7 +75,7 @@ public class DemoFragment extends Fragment {
         txtFeedBack=view.findViewById(R.id.txt_feedBack);
 
         setOne = view.findViewById(R.id.buttonSet1);
-        txtView.setText("Squat: 5x5: "+db.getLastSquatEntryDouble()*0.8+"KG");
+        txtView.setText("Squat: 5x5: "+db.getLastEntry("Squat", "name")*0.8+"KG");
 
         setTwo=view.findViewById(R.id.buttonSet2);
         setThree=view.findViewById(R.id.buttonSet3);
@@ -216,7 +216,7 @@ public class DemoFragment extends Fragment {
                     txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
                     if(!dataWasSet)
                     {
-                        db.UpdateSquatLatestMax(db.getLastSquatEntryDouble()+2.5);
+                        db.UpdateLatestMax(db.getLastEntry("Squat", "name")+2.5, "Squat", "name");
                         txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
                         dataWasSet = true;
                     }
