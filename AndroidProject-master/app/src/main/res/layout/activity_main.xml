@@ -5,55 +5,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragmenthome"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#01206D">
-
-    <RelativeLayout
-        android:layout_width="346dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginRight="35dp">
-
-        <TextView
-            android:id="@+id/tx1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello again!"
-            android:textColor="#ffff"
-
-            android:textSize="22sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tx1"
-            android:layout_marginTop="6dp"
-            android:textColor="#fff"
-            android:text="User"
-            android:textStyle="bold"/>
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/user" />
-
-    </RelativeLayout>
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/wo2"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="800dp"
-                app:cardPreventCornerOverlap="true"
-                android:layout_marginTop="100dp"
-                app:cardMaxElevation="@dimen/activity_horizontal_margin"
-                app:cardCornerRadius="24dp">
+                app:cardPreventCornerOverlap="true"                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/tx1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hello again!"
+                        android:textStyle="italic"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="#5A5555"
+                        android:textSize="22sp" />
 
 
     <androidx.cardview.widget.CardView
@@ -70,6 +48,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="5dp">
+
+
+
 
             <ImageView
                 android:layout_width="50dp"

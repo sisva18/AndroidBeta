@@ -10,13 +10,6 @@
     tools:context=".TestFragmentsActivity"
     android:layout_gravity="center">
 
-
-<!--    -->
-<!--    <TextView-->
-<!--        android:id="@+id/txt_title"-->
-<!--        android:layout_width="392dp"-->
-<!--        android:layout_height="236dp"-->
-<!--        android:textSize="40dp" />-->
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="300dp"
@@ -108,24 +101,6 @@
 
 </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="25dp">
-
-         <Button
-            android:id="@+id/finish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:layout_marginLeft="295dp"
-            android:background="#9900BCD4"
-            android:text="FINISH"
-            android:textSize="22sp"/>
-
-
-    </LinearLayout>
 
 </LinearLayout>
 

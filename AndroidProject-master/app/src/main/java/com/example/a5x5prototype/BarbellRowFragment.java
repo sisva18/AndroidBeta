@@ -73,8 +73,8 @@ public class BarbellRowFragment extends Fragment {
         setThree=view.findViewById(R.id.buttonSet3);
         setFour=view.findViewById(R.id.buttonSet4);
         setFive=view.findViewById(R.id.buttonSet5);
-        finish=view.findViewById(R.id.finish);
-        editTextInput=view.findViewById(R.id.edit_input_txt);
+//        finish=view.findViewById(R.id.finish);
+//        editTextInput=view.findViewById(R.id.edit_input_txt);
 
 
         //txtViewSet.setText("Sets remaining 5");
@@ -215,9 +215,6 @@ public class BarbellRowFragment extends Fragment {
                         txtFeedBack.setText("Congratulations, row max increment 2.5Kg");
                         dataWasSet = true;
                     }
-
-
-
                 }
 
                 if(dataWasSet){
@@ -233,12 +230,12 @@ public class BarbellRowFragment extends Fragment {
 
         });
 
-        finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                main();
-            }
-        });
+//        finish.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                main();
+//            }
+//        });
 
         return view;
     }

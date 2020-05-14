@@ -27,12 +27,14 @@ public class DemoFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+    int i=0;
+
 
 
     private TextView txtView, txtViewSet, txtFeedBack;
     private Button setOne, setTwo, setThree, setFour, setFive;
 
-    private int counterOne = 6;
+    private int counterOne = 3;
     private int counterTwo= 6;
     private int counterThree = 6;
     private int counterFour= 6;
@@ -77,30 +79,46 @@ public class DemoFragment extends Fragment {
         setFour=view.findViewById(R.id.buttonSet4);
         setFive=view.findViewById(R.id.buttonSet5);
 
+
         //txtViewSet.setText("Sets remaining 5");
 
         setOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                i=1-i;
 
-                if(counterOne<=0 ){
-                    counterOne = 6;
-                }
-                if(counterOne>0) {
-                    counterOne--;
-                    convertOne = Integer.toString(counterOne);
-                    setOne.setText(convertOne);
-                }
-
-                if(counterOne >= 5  )
-                {
+                if(i==0){
+                   // setOne.setVisibility(View.);
+                    setOne.setBackgroundResource(R.drawable.success);
                     txtFeedBack.setText("Congratulations, complete the next 4 sets to increment max!");
-                    setOneCompleted = true;
-                }
-                if(counterOne < 5 )
-                {
+
+                } else{
+                    setOne.setBackgroundResource(R.drawable.fail);
                     txtFeedBack.setText("Lift failed, try again next time!");
+
+
+
                 }
+
+
+//                if(counterOne<=0 ){
+//                    counterOne = 3;
+//                }
+//                if(counterOne>0) {
+//                    counterOne--;
+////                    convertOne = Integer.toString(counterOne);
+////                    setOne.setText(convertOne);
+//                }
+//
+//                if(counterOne >= 2  )
+//                {
+//                    txtFeedBack.setText("Congratulations, complete the next 4 sets to increment max!");
+//                    setOneCompleted = true;
+//                }
+//                if(counterOne < 2 )
+//                {
+//                    txtFeedBack.setText("Lift failed, try again next time!");
+//                }
 
 
             }
@@ -109,25 +127,36 @@ public class DemoFragment extends Fragment {
         setTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                i=1-i;
 
-                if(counterTwo<=0 ){
-                    counterTwo = 6;
-                }
-                if(counterTwo>0) {
-                    counterTwo--;
-                    convertTwo = Integer.toString(counterTwo);
-                    setTwo.setText(convertTwo);
-                }
-
-                if(counterTwo >= 5 )
-                {
+                if(i==0){
+                    // setOne.setVisibility(View.);
+                    setTwo.setBackgroundResource(R.drawable.success);
                     txtFeedBack.setText("Congratulations, complete the next 3 sets to increment max!");
-                    setTwoCompleted = true;
-                }
-                if(counterTwo < 5 )
-                {
+
+                } else {
+                    setTwo.setBackgroundResource(R.drawable.fail2);
                     txtFeedBack.setText("Lift failed, try again next time!");
                 }
+
+//                if(counterTwo<=0 ){
+//                    counterTwo = 6;
+//                }
+//                if(counterTwo>0) {
+//                    counterTwo--;
+//                    convertTwo = Integer.toString(counterTwo);
+//                    setTwo.setText(convertTwo);
+//                }
+//
+//                if(counterTwo >= 5 )
+//                {
+//                    txtFeedBack.setText("Congratulations, complete the next 3 sets to increment max!");
+//                    setTwoCompleted = true;
+//                }
+//                if(counterTwo < 5 )
+//                {
+//                    txtFeedBack.setText("Lift failed, try again next time!");
+//                }
 
             }
         });
@@ -135,25 +164,35 @@ public class DemoFragment extends Fragment {
         setThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                i=1-i;
 
-                if(counterThree<=0 ){
-                    counterThree = 6;
-                }
-                if(counterThree>0) {
-                    counterThree--;
-                    convertThree = Integer.toString(counterThree);
-                    setThree.setText(convertThree);
-                }
-
-                if(counterThree >= 5)
-                {
+                if(i==0){
+                    // setOne.setVisibility(View.);
+                    setThree.setBackgroundResource(R.drawable.success);
                     txtFeedBack.setText("Congratulations, complete the next 2 sets to increment max!");
-                    setThreeCompleted = true;
-                }
-                if(counterThree < 5 )
-                {
-                    txtFeedBack.setText("Lift failed, try again next time!");
-                }
+
+                } else{
+                    setThree.setBackgroundResource(R.drawable.fail);
+                    txtFeedBack.setText("Lift failed, try again next time!");}
+
+//                if(counterThree<=0 ){
+//                    counterThree = 6;
+//                }
+//                if(counterThree>0) {
+//                    counterThree--;
+//                    convertThree = Integer.toString(counterThree);
+//                    setThree.setText(convertThree);
+//                }
+//
+//                if(counterThree >= 5)
+//                {
+//                    txtFeedBack.setText("Congratulations, complete the next 2 sets to increment max!");
+//                    setThreeCompleted = true;
+//                }
+//                if(counterThree < 5 )
+//                {
+//                    txtFeedBack.setText("Lift failed, try again next time!");
+//                }
 
             }
         });
@@ -161,25 +200,35 @@ public class DemoFragment extends Fragment {
         setFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                i=1-i;
 
-                if(counterFour<=0 ){
-                    counterFour = 6;
-                }
-                if(counterFour>0) {
-                    counterFour--;
-                    convertFour = Integer.toString(counterFour);
-                    setFour.setText(convertFour);
-                }
-
-                if(counterFour >= 5 )
-                {
+                if(i==0){
+                    // setOne.setVisibility(View.);
+                    setFour.setBackgroundResource(R.drawable.success);
                     txtFeedBack.setText("Congratulations, complete the next 1 sets to increment max!");
-                    setFourCompleted = true;
-                }
-                if(counterFour < 5 )
-                {
-                    txtFeedBack.setText("Lift failed, try again next time!");
-                }
+
+                } else{
+                    setFour.setBackgroundResource(R.drawable.fail);
+                    txtFeedBack.setText("Lift failed, try again next time!");}
+//
+//                if(counterFour<=0 ){
+//                    counterFour = 6;
+//                }
+//                if(counterFour>0) {
+//                    counterFour--;
+//                    convertFour = Integer.toString(counterFour);
+//                    setFour.setText(convertFour);
+//                }
+//
+//                if(counterFour >= 5 )
+//                {
+//                    txtFeedBack.setText("Congratulations, complete the next 1 sets to increment max!");
+//                    setFourCompleted = true;
+//                }
+//                if(counterFour < 5 )
+//                {
+//                    txtFeedBack.setText("Lift failed, try again next time!");
+//                }
 
             }
         });
@@ -188,37 +237,48 @@ public class DemoFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(counterFive<=0 ){
-                    counterFive = 6;
-                }
-                if(counterFive>0) {
-                    counterFive--;
-                    convertFive = Integer.toString(counterFive);
-                    setFive.setText(convertFive);
-                }
+                i=1-i;
 
-                if(counterFive >= 5 )
-                {
-                    txtFeedBack.setText("Nice you got the reps, you can do it next time!");
-                    setFiveCompleted = true;
-                }
-                if(counterFour < 5 )
-                {
-                    txtFeedBack.setText("Lift failed, try again next time!");
-                }
-                if(counterOne == 5 && counterTwo == 5 && counterThree == 5 && counterFour == 5 && counterFive == 5 )
-                {
+                if(i==0){
+                    // setOne.setVisibility(View.);
+                    setFive.setBackgroundResource(R.drawable.success);
                     txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
-                    if(!dataWasSet)
-                    {
-                        db.UpdateSquatLatestMax(db.getLastSquatEntryDouble()+2.5);
-                        txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
-                        dataWasSet = true;
-                    }
+
+                } else{
+                    setFive.setBackgroundResource(R.drawable.fail);
+                    txtFeedBack.setText("Lift failed, try again next time!");}
+
+//                if(counterFive<=0 ){
+//                    counterFive = 6;
+//                }
+//                if(counterFive>0) {
+//                    counterFive--;
+//                    convertFive = Integer.toString(counterFive);
+//                    setFive.setText(convertFive);
+//                }
+//
+//                if(counterFive >= 5 )
+//                {
+//                    txtFeedBack.setText("Nice you got the reps, you can do it next time!");
+//                    setFiveCompleted = true;
+//                }
+//                if(counterFour < 5 )
+//                {
+//                    txtFeedBack.setText("Lift failed, try again next time!");
+//                }
+//                if(counterOne == 5 && counterTwo == 5 && counterThree == 5 && counterFour == 5 && counterFive == 5 )
+//                {
+//                    txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
+//                    if(!dataWasSet)
+//                    {
+//                        db.UpdateSquatLatestMax(db.getLastSquatEntryDouble()+2.5);
+//                        txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
+//                        dataWasSet = true;
+//                    }
 
 
 
-                }
+              //  }
 
                if(dataWasSet){
                    setOne.setEnabled(false);

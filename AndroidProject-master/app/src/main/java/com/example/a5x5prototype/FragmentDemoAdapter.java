@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class FragmentDemoAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 3;
     Context context;
+
+
     DatabaseHelper mDatabaseHelper;
     public FragmentDemoAdapter(@NonNull FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);

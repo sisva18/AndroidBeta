@@ -1,70 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WorkoutsActivity">
+    tools:context=".WorkoutsActivity"
+    android:orientation="vertical"
+    android:layout_gravity="center">
 
     <TextView
+        android:layout_marginTop="100dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:text="Choose your day"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221"
-        />
+        android:layout_gravity="center"/>
 
 
-    <Button
-        android:id="@+id/workoutA"
-        android:layout_width="wrap_content"
+<androidx.cardview.widget.CardView
+    android:layout_width="380dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardCornerRadius="12dp"
+    android:layout_marginTop="70dp"
+    android:id="@+id/fragmentTest">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Workout A"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
 
-    <Button
-        android:id="@+id/workoutB"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/wo1"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_weight="0.8"
+            android:src="@drawable/w3"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"/>
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:text="WORKOUT A"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="#2B2B2B"
+            android:textSize="35dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:text="Workout B"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:layout_gravity="center"
+        app:cardCornerRadius="12dp"
+        android:layout_marginTop="40dp"
+        android:id="@+id/workoutB">
 
-    <Button
-        android:id="@+id/deleteAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/workoutA"
-        app:layout_constraintVertical_bias="0.368" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
 
-    <Button
-        android:id="@+id/fragmentTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fragments"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/workoutA"
-        app:layout_constraintVertical_bias="0.615" />
+            <ImageView
+                android:id="@+id/wo2"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_weight="0.8"
+                android:src="@drawable/w5"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="15dp"
+                android:text="WORKOUT B"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="#2B2B2B"
+                android:textSize="35dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+
+
+    <!--    <Button-->
+    <!--        android:id="@+id/deleteAll"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="delete"-->
+    <!--        app:layout_constraintVertical_bias="0.368" />-->
+
+
+    <!--    <Button-->
+    <!--        android:id="@+id/workoutA"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Workout A"/>-->
