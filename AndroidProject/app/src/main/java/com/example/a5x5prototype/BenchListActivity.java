@@ -29,7 +29,7 @@ public class BenchListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_layout_bench);
         mListView = (ListView) findViewById(R.id.listView);
-        mDatabaseHelper = new DatabaseHelper(this);
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
 
         populateListView();
         PopUpMenu();
@@ -40,7 +40,7 @@ public class BenchListActivity extends AppCompatActivity {
         Log.d(TAG, "populateListView: Displaying data in the ListView.");
 
         //get the data and append to a list
-        Cursor data = mDatabaseHelper.getBenchData();
+        Cursor data = mDatabaseHelper.getData("Bench");
         ArrayList<String> listData = new ArrayList<>();
         while(data.moveToNext()){
             //get the value from the database in column 1
@@ -58,7 +58,7 @@ public class BenchListActivity extends AppCompatActivity {
                 String name = adapterView.getItemAtPosition(i).toString();
                 Log.d(TAG, "onItemClick: You Clicked on " + name);
 
-                Cursor data = mDatabaseHelper.getBenchID(name); //get the id associated with that name
+                Cursor data = mDatabaseHelper.getID("Bench", name); //get the id associated with that name
                 int itemID = -1;
                 while(data.moveToNext()){
                     itemID = data.getInt(0);

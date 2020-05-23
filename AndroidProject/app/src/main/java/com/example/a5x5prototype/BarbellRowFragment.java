@@ -1,12 +1,10 @@
 package com.example.a5x5prototype;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -25,8 +23,7 @@ public class BarbellRowFragment extends Fragment {
 
 
     private TextView txtView, txtViewSet, txtFeedBack;
-    private Button setOne, setTwo, setThree, setFour, setFive, finish;
-    private EditText editTextInput;
+    private Button setOne, setTwo, setThree, setFour, setFive;
 
     private int counterOne = 6;
     private int counterTwo= 6;
@@ -66,16 +63,13 @@ public class BarbellRowFragment extends Fragment {
         // txtViewSet = view.findViewById(R.id. txt_SetsSquat);
         txtFeedBack=view.findViewById(R.id.txt_feedBack);
 
-        txtView.setText("Squat: 5x5: "+db.getLastRowEntry()*0.8+"KG");
-
         setOne = view.findViewById(R.id.buttonSet1);
+        txtView.setText("Squat: 5x5: "+db.getLastEntry("BBRow", "name")*0.8+"KG");
+
         setTwo=view.findViewById(R.id.buttonSet2);
         setThree=view.findViewById(R.id.buttonSet3);
         setFour=view.findViewById(R.id.buttonSet4);
         setFive=view.findViewById(R.id.buttonSet5);
-//        finish=view.findViewById(R.id.finish);
-//        editTextInput=view.findViewById(R.id.edit_input_txt);
-
 
         //txtViewSet.setText("Sets remaining 5");
 
@@ -211,10 +205,13 @@ public class BarbellRowFragment extends Fragment {
                     txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
                     if(!dataWasSet)
                     {
-                        db.UpdateRowLatestMax(db.getLastRowEntry()+2.5);
+                        db.UpdateLatestMax(db.getLastEntry("BBRow", "name")+2.5, "BBRow", "name");
                         txtFeedBack.setText("Congratulations, row max increment 2.5Kg");
                         dataWasSet = true;
                     }
+
+
+
                 }
 
                 if(dataWasSet){
@@ -230,36 +227,8 @@ public class BarbellRowFragment extends Fragment {
 
         });
 
-//        finish.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                main();
-//            }
-//        });
 
         return view;
     }
-//
-//    public void startSerivce(View v){
-//        String input = editTextInput.getText().toString();
-//
-//        Intent serviceIntent = new Intent(getActivity(),ExampleService.class);
-//        serviceIntent.putExtra("inputExtra", input);
-//
-//        getActivity().startService(new Intent(serviceIntent));
-//
-//
-//    }
-//
-//    public void stopSerivce(View v){
-//        Intent serviceIntent = new Intent(getActivity(),ExampleService.class);
-//
-//        getActivity().stopService(new Intent(serviceIntent));
-//
-//    }
 
-    private void main(){
-        Intent intent = new Intent(getActivity(),MainActivity.class);
-        startActivity(intent);
-    }
 }

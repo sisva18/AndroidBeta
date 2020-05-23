@@ -27,7 +27,7 @@ public class MaxesActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.editText);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnViewData = (Button) findViewById(R.id.btnView);
-        mDatabaseHelper = new DatabaseHelper(this);
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +54,7 @@ public class MaxesActivity extends AppCompatActivity {
     }
 
     public void AddData(String newEntry) {
-        boolean insertData = mDatabaseHelper.addSquatData(newEntry);
+        boolean insertData = mDatabaseHelper.addEntry(newEntry, "name", "Squat");
 
         if (insertData) {
             toastMessage("Data Successfully Inserted!");

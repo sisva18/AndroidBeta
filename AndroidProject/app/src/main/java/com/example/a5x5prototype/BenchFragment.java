@@ -64,7 +64,7 @@ public class BenchFragment extends Fragment {
         txtFeedBack=view.findViewById(R.id.txt_feedBack);
 
         setOne = view.findViewById(R.id.buttonSet1);
-        txtView.setText("Squat: 5x5: "+db.getLastBenchEntry()*0.8+"KG");
+        txtView.setText("Squat: 5x5: "+db.getLastEntry("Bench", "name")*0.8+"KG");
 
         setTwo=view.findViewById(R.id.buttonSet2);
         setThree=view.findViewById(R.id.buttonSet3);
@@ -205,7 +205,7 @@ public class BenchFragment extends Fragment {
                     txtFeedBack.setText("Congratulations, bench max increment 2.5Kg");
                     if(!dataWasSet)
                     {
-                        db.UpdateBenchLatestMax(db.getLastBenchEntry()+2.5);
+                        db.UpdateLatestMax(db.getLastEntry("Bench", "name")+2.5, "Bench", "name");
                         txtFeedBack.setText("Congratulations, bench max increment 2.5Kg");
                         dataWasSet = true;
                     }

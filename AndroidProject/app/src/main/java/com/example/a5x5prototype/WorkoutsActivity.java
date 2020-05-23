@@ -25,14 +25,14 @@ import android.widget.TextView;
 
 public class WorkoutsActivity extends AppCompatActivity {
 
-    DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
+    DatabaseHelper mDatabaseHelper;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workouts);
-
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
         ImageView imageView = (ImageView) findViewById(R.id.wo1);
         GradientDrawable drawable = (GradientDrawable) getApplicationContext().getDrawable(R.drawable.roundcorner);
         imageView.setBackground(drawable);
@@ -75,7 +75,7 @@ public class WorkoutsActivity extends AppCompatActivity {
     }
 
     private void delete(){
-        mDatabaseHelper.deletaALl();
+        mDatabaseHelper.deleteALl();
     }
 
 }

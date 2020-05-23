@@ -16,85 +16,58 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    private static DatabaseHelper sInstance;
+
     private static final String TAG = "DatabaseHelper";
-    public static String PROGRESSION_OVERALL = "ProgressionData";// using this to initiate the whole database static so only one instance of database
-    private static final String TABLE_SQUAT = "Sqaut";
-    private static final String COL1 = "ID";
-    private static final String COL2 = "name";
+    private static final String PROGRESSION_OVERALL = "ProgressionData";
 
-    private static final String TABLE_BENCHPRESS = "Bench";
-    private static final String COL3 = "ID";
-    private static final String COL4 = "name";
-
-    private static final String TABLE_OHP = "OHP";
-    private static final String COL5 = "ID";
-    private static final String COL6 = "name";
-
-    private static final String TABLE_BBROW = "BBROW";
-    private static final String COL7 = "ID";
-    private static final String COL8 = "name";
-
-    private static final String TABLE_DEADLIFT = "DEADLIFT";
-    private static final String COL9 = "ID";
-    private static final String COL10 = "name";
-
+    public static synchronized DatabaseHelper getInstance(Context context) {
+        if (sInstance == null) {
+            sInstance = new DatabaseHelper(context.getApplicationContext());
+        }
+        return sInstance;
+    }
 
     public DatabaseHelper(Context context) {
         super(context, PROGRESSION_OVERALL , null, 1);
-
     }
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-        String createSquatTable = "CREATE TABLE " + TABLE_SQUAT + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 +" TEXT)";
-        String createBenchTable = "CREATE TABLE " + TABLE_BENCHPRESS + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL4 +" TEXT)";
-        String createOHPTable = "CREATE TABLE " + TABLE_OHP + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL6 +" TEXT)";
-        String createRowTable = "CREATE TABLE " + TABLE_BBROW + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL8 +" TEXT)";
-        String createDeadliftTable = "CREATE TABLE " + TABLE_DEADLIFT + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL10 +" TEXT)";
-
-
-        db.execSQL(createSquatTable);
-        db.execSQL(createBenchTable);
-        db.execSQL(createOHPTable);
-        db.execSQL(createRowTable);
-        db.execSQL(createDeadliftTable);
+        db.execSQL("CREATE TABLE Squat(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)");
+        db.execSQL("CREATE TABLE Bench(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)");
+        db.execSQL("CREATE TABLE OHP(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)");
+        db.execSQL("CREATE TABLE BBRow(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)");
+        db.execSQL("CREATE TABLE Deadlift(ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BENCHPRESS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SQUAT);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_OHP);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BBROW);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DEADLIFT);
+        db.execSQL("DROP TABLE IF EXISTS Squat");
+        db.execSQL("DROP TABLE IF EXISTS Bench");
+        db.execSQL("DROP TABLE IF EXISTS OHP");
+        db.execSQL("DROP TABLE IF EXISTS BBRow");
+        db.execSQL("DROP TABLE IF EXISTS Deadlift");
         onCreate(db);
     }
 
-    public ArrayList<Double> getLastSquatEntry(){
-        ArrayList<Double> data = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_SQUAT, new String[]{COL2},null, null, null, null, null);
-        Double add = null;
-        while(cursor.moveToNext()){
-            if(cursor.moveToLast()){
-                add=cursor.getDouble(0);
-                data.add(add);
-            }
+    public boolean addEntry(String item, String col, String table) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(col, item);
+        Log.d(TAG, "addData: Adding " + item + " to " + table);
+        long result = db.insert(table, null, contentValues);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
         }
-        cursor.close();
-        return data;
     }
-    public double getLastSquatEntryDouble(){
+
+    public double getLastEntry(String table, String col) {
         double data = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_SQUAT, new String[]{COL2},null, null, null, null, null);
+        Cursor cursor = db.query(table, new String[]{col},null, null, null, null, null);
 
         while(cursor.moveToNext()){
             if(cursor.moveToLast()){
@@ -105,371 +78,61 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return data;
     }
-    public double getLastBenchEntry(){
-        double data = 0;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_BENCHPRESS, new String[]{COL4},null, null, null, null, null);
 
-        while(cursor.moveToNext()){
-            if(cursor.moveToLast()){
-                data=cursor.getDouble(0);
-
-            }
-        }
-        cursor.close();
-        return data;
-    }
-
-    public double getLastOhpEntry(){
-        double data = 0;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_OHP, new String[]{COL6},null, null, null, null, null);
-        Double add = null;
-        while(cursor.moveToNext()){
-            if(cursor.moveToLast()){
-                data=cursor.getDouble(0);
-            }
-        }
-        cursor.close();
-        return data;
-    }
-    public double getLastRowEntry(){
-        double data = 0;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_BBROW, new String[]{COL8},null, null, null, null, null);
-        Double add = null;
-        while(cursor.moveToNext()){
-            if(cursor.moveToLast()){
-                data=cursor.getDouble(0);
-
-            }
-        }
-        cursor.close();
-        return data;
-    }
-    public ArrayList<Double> getLastDeadliftEntry(){
-        ArrayList<Double> data = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_DEADLIFT, new String[]{COL10},null, null, null, null, null);
-        Double add = null;
-        while(cursor.moveToNext()){
-            if(cursor.moveToLast()){
-                add=cursor.getDouble(0);
-                data.add(add);
-            }
-        }
-        cursor.close();
-        return data;
-    }
-
-    public ArrayList<String> getAllFromSquat(){
-        ArrayList<String> data = new ArrayList<String>();
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(TABLE_SQUAT, new String[]{COL2},null, null, null, null, null);
-        String add = null;
-        while(cursor.moveToNext()){
-
-                add=cursor.getString(0);
-                data.add(add);
-
-        }
-        cursor.close();
-        return data;
-    }
-
-
-
-    public boolean addSquatData(String item) {
-        // SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");// date pattern
-        //w  String date = sdf.format(new Date()); //stringify and format new date = current date
+    public void UpdateLatestMax(double value, String table, String col){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, item);// only adding the item for now since I want to use it for calculations maybe figure out a way to add the date and so on later.
-        //contentValues.put(COL2, "Date: "+ date+ "Squat: " + item);
-        Log.d(TAG, "addData: Adding " + item + " to " + TABLE_SQUAT);
-        long result = db.insert(TABLE_SQUAT, null, contentValues);
-        //if date as inserted incorrectly it will return -1
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        contentValues.put(col, value);
+        long result = db.insert(table, null, contentValues);
     }
 
-    public boolean addBenchData(String item) {
-        // SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");// date pattern
-        //w  String date = sdf.format(new Date()); //stringify and format new date = current date
+    //Returns all the data from database
+    public Cursor getData(String table) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL4, item);// only adding the item for now since I want to use it for calculations maybe figure out a way to add the date and so on later.
-        //contentValues.put(COL2, "Date: "+ date+ "Squat: " + item);
-        Log.d(TAG, "addData: Adding " + item + " to " + TABLE_BENCHPRESS);
-        long result = db.insert(TABLE_BENCHPRESS, null, contentValues);
-        //if date as inserted incorrectly it will return -1
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-    public boolean addOhpData(String item) {
-        // SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");// date pattern
-        //w  String date = sdf.format(new Date()); //stringify and format new date = current date
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL6, item);// only adding the item for now since I want to use it for calculations maybe figure out a way to add the date and so on later.
-        //contentValues.put(COL2, "Date: "+ date+ "Squat: " + item);
-        Log.d(TAG, "addData: Adding " + item + " to " + TABLE_OHP);
-        long result = db.insert(TABLE_OHP, null, contentValues);
-        //if date as inserted incorrectly it will return -1
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean addRowData(String item) {
-        // SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");// date pattern
-        //w  String date = sdf.format(new Date()); //stringify and format new date = current date
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL8, item);// only adding the item for now since I want to use it for calculations maybe figure out a way to add the date and so on later.
-        //contentValues.put(COL2, "Date: "+ date+ "Squat: " + item);
-        Log.d(TAG, "addData: Adding " + item + " to " + TABLE_BBROW);
-        long result = db.insert(TABLE_BBROW, null, contentValues);
-        //if date as inserted incorrectly it will return -1
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-    public boolean addDeadliftData(String item) {
-        // SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");// date pattern
-        //w  String date = sdf.format(new Date()); //stringify and format new date = current date
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL10, item);// only adding the item for now since I want to use it for calculations maybe figure out a way to add the date and so on later.
-        //contentValues.put(COL2, "Date: "+ date+ "Squat: " + item);
-        Log.d(TAG, "addData: Adding " + item + " to " + TABLE_DEADLIFT);
-        long result = db.insert(TABLE_DEADLIFT, null, contentValues);
-        //if date as inserted incorrectly it will return -1
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-
-
-
-    public boolean UpdateSquatLatestMax(double newMax){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, newMax);
-        long result = db.insert(TABLE_SQUAT, null, contentValues);
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean UpdateBenchLatestMax(double newMax){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL4, newMax);
-        long result = db.insert(TABLE_BENCHPRESS, null, contentValues);
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean UpdateOhpLatestMax(double newMax){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL6, newMax);
-        long result = db.insert(TABLE_OHP, null, contentValues);
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean UpdateRowLatestMax(double newMax){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL8, newMax);
-        long result = db.insert(TABLE_BBROW, null, contentValues);
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public boolean UpdateDeadliftLatestMax(double newMax){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL10, newMax);
-        long result = db.insert(TABLE_DEADLIFT, null, contentValues);
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    /**
-     * Returns all the data from database
-     * @return
-     */
-    public Cursor getSquatData(){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_SQUAT;
-
+        String query = "SELECT * FROM " + table;
         Cursor data = db.rawQuery(query, null);
         return data;
     }
 
-    public Cursor getBenchData(){
-
+    //Returns only the ID that matches the name passed in
+    public Cursor getID(String table, String item) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_BENCHPRESS;
-
+        String query = "SELECT ID FROM " + table + " WHERE name = '" + item + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
     }
 
-    public Cursor getOhpData(){
-
+    //Updates the name field
+    public void updateName(String table, String newName, int id, String oldName){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_OHP;
-
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-
-    public Cursor getRowData(){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_BBROW;
-
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-
-    public Cursor getDeadliftData(){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_DEADLIFT;
-
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-
-
-    /**
-     * Returns only the ID that matches the name passed in
-     * @param item
-     * @return
-     */
-    public Cursor getSquatID(String item){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL1 + " FROM " + TABLE_SQUAT +
-                " WHERE " + COL2 + " = '" + item + "'";
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-
-    public Cursor getBenchID(String item){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL3 + " FROM " + TABLE_BENCHPRESS +
-                " WHERE " + COL4 + " = '" + item + "'";
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-
-    public Cursor getOhpID(String item){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL5 + " FROM " + TABLE_OHP +
-                " WHERE " + COL6 + " = '" + item + "'";
-        Cursor data = db.rawQuery(query, null);
-        return data;
-
-    }
-
-    public Cursor getRowID(String item){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL7 + " FROM " + TABLE_BBROW +
-                " WHERE " + COL8 + " = '" + item + "'";
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-
-    public Cursor getDeadliftID(String item){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL9 + " FROM " + TABLE_DEADLIFT +
-                " WHERE " + COL10 + " = '" + item + "'";
-        Cursor data = db.rawQuery(query, null);
-        return data;
-
-    }
-
-
-    /**
-     * Updates the name field
-     * @param newName
-     * @param id
-     * @param oldName
-     */
-    public void updateName(String newName, int id, String oldName){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_SQUAT + " SET " + COL2 +
-                " = '" + newName + "' WHERE " + COL1 + " = '" + id + "'" +
-                " AND " + COL2 + " = '" + oldName + "'";
+        String query = "UPDATE " + table + " SET name = '" + newName + "' WHERE ID = '" + id + "'" + " AND name = '" + oldName + "'";
         Log.d(TAG, "updateName: query: " + query);
         Log.d(TAG, "updateName: Setting name to " + newName);
         db.execSQL(query);
     }
 
-    /**
-     * Delete from database
-     * @param id
-     * @param name
-     */
-    public void deleteName(int id, String name){
+    //Delete from database
+    public void deleteName(String table, int id, String name){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE FROM " + TABLE_SQUAT + " WHERE "
-                + COL1 + " = '" + id + "'" +
-                " AND " + COL2 + " = '" + name + "'";
+        String query = "DELETE FROM " + table + " WHERE ID = '" + id + "'" + " AND name = '" + name + "'";
         Log.d(TAG, "deleteName: query: " + query);
         Log.d(TAG, "deleteName: Deleting " + name + " from database.");
         db.execSQL(query);
     }
 
-    public void deletaALl(){
+    public void deleteALl(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String sqaut = "DELETE FROM " + TABLE_SQUAT;
-        String row = "DELETE FROM " + TABLE_BBROW;
-        String bench = "DELETE FROM " + TABLE_BENCHPRESS;
-        String ohp = "DELETE FROM " + TABLE_OHP;
-        String deadlift = "DELETE FROM " + TABLE_DEADLIFT;
-        db.execSQL(sqaut);
+        String squat = "DELETE FROM Squat";
+        String row = "DELETE FROM BBRow";
+        String bench = "DELETE FROM Bench";
+        String ohp = "DELETE FROM OHP";
+        String deadlift = "DELETE FROM Deadlift";
+        db.execSQL(squat);
         db.execSQL(row);
         db.execSQL(bench);
         db.execSQL(ohp);
         db.execSQL(deadlift);
-
-
     }
-
 
 }
 

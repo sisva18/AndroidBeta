@@ -1,24 +1,24 @@
 package com.example.a5x5prototype;
 
-import android.os.Bundle;
+        import android.os.Bundle;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+        import androidx.annotation.Nullable;
+        import androidx.fragment.app.Fragment;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+        import android.util.Log;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.Button;
+        import android.widget.TextView;
 
-import java.util.ArrayList;
+        import java.util.ArrayList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DemoFragment extends Fragment {
+public class SquatFragment extends Fragment {
 
 
     private static final String TAG = "DemoFragment";
@@ -55,7 +55,7 @@ public class DemoFragment extends Fragment {
 
     public boolean dataWasSet = false;
 
-    public DemoFragment() {
+    public SquatFragment() {
         // Required empty public constructor
     }
 
@@ -69,9 +69,9 @@ public class DemoFragment extends Fragment {
         //db.UpdateSquatLatestMax(db.getLastSquatEntryDouble()+2.5); how to insert data into the db
         View view = inflater.inflate(R.layout.fragment_demo, container, false);
         txtView = view.findViewById(R.id.txt_Squat);
-       // txtViewSet = view.findViewById(R.id. txt_SetsSquat);
+        // txtViewSet = view.findViewById(R.id. txt_SetsSquat);
         txtFeedBack=view.findViewById(R.id.txt_feedBack);
-        txtView.setText("Squat: 5x5: "+db.getLastSquatEntryDouble()*0.8+"KG");
+        txtView.setText("Squat: 5x5: "+db.getLastEntry("Squat", "name")*0.8+"KG");
 
         setOne = view.findViewById(R.id.buttonSet1);
         setTwo=view.findViewById(R.id.buttonSet2);
@@ -88,7 +88,7 @@ public class DemoFragment extends Fragment {
                 i=1-i;
 
                 if(i==0){
-                   // setOne.setVisibility(View.);
+                    // setOne.setVisibility(View.);
                     setOne.setBackgroundResource(R.drawable.success);
                     txtFeedBack.setText("Congratulations, complete the next 4 sets to increment max!");
 
@@ -271,22 +271,22 @@ public class DemoFragment extends Fragment {
 //                    txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
 //                    if(!dataWasSet)
 //                    {
-//                        db.UpdateSquatLatestMax(db.getLastSquatEntryDouble()+2.5);
+//                        db.UpdateLatestMax(db.getLastEntry("Squat", "name")+2.5, "Squat", "name");
 //                        txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
 //                        dataWasSet = true;
 //                    }
 
 
 
-              //  }
+                //  }
 
-               if(dataWasSet){
-                   setOne.setEnabled(false);
-                   setTwo.setEnabled(false);
-                   setThree.setEnabled(false);
-                   setFour.setEnabled(false);
-                   setFive.setEnabled(false);
-               }
+                if(dataWasSet){
+                    setOne.setEnabled(false);
+                    setTwo.setEnabled(false);
+                    setThree.setEnabled(false);
+                    setFour.setEnabled(false);
+                    setFive.setEnabled(false);
+                }
 
             }
 
