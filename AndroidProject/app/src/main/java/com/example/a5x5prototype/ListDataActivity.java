@@ -20,8 +20,9 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
+import java.util.Date;
 
 
 public class ListDataActivity extends AppCompatActivity {
@@ -52,7 +53,7 @@ public class ListDataActivity extends AppCompatActivity {
         while(data.moveToNext()){
             //get the value from the database in column 1
             //then add it to the ArrayList
-            listData.add(data.getString(1));
+            listData.add(data.getString(1) + " kg "+  "Date: "+ mDatabaseHelper.getDateTime());
         }
         //create the list adapter and set the adapter
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);

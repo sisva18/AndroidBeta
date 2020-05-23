@@ -54,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addEntry(String item, String col, String table) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(col, item);
+        contentValues.put(col, item );
         Log.d(TAG, "addData: Adding " + item + " to " + table);
         long result = db.insert(table, null, contentValues);
         if (result == -1) {
@@ -63,6 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
 
     public double getLastEntry(String table, String col) {
         double data = 0;
@@ -77,6 +78,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return data;
+    }
+
+    public String getDateTime() {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+
+                "yyyy-MM-dd");
+
+        Date date = new Date();
+
+        return dateFormat.format(date);
+
     }
 
     public void UpdateLatestMax(double value, String table, String col){

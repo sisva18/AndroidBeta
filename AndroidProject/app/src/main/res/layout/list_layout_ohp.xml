@@ -21,10 +21,14 @@
         <Button
             android:id="@+id/exlist"
             android:layout_width="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="160dp"
             android:layout_height="36dp"
-            android:text="Button" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="185dp"
+            android:layout_marginLeft="185dp"
+            android:layout_marginRight="138dp"
+            android:text="OHP" />
     </RelativeLayout>
 
     <LinearLayout

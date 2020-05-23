@@ -46,7 +46,7 @@ public class DeadliftActivity extends AppCompatActivity {
         while(data.moveToNext()){
             //get the value from the database in column 1
             //then add it to the ArrayList
-            listData.add(data.getString(1));
+            listData.add(data.getString(1)+ " kg "+  "Date: "+ mDatabaseHelper.getDateTime());
         }
         //create the list adapter and set the adapter
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);

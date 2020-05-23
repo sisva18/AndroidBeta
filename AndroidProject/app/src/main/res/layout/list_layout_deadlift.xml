@@ -14,17 +14,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="List of maxes"
+            android:text="Deadlift"
             tools:text="List of maxes: "
             android:textSize="24dp"/>
 
         <Button
             android:id="@+id/exlist"
             android:layout_width="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="160dp"
             android:layout_height="36dp"
-            android:text="Button" />
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="138dp"
+            android:text="Deadlift" />
     </RelativeLayout>
 
     <LinearLayout

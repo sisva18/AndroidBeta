@@ -24,7 +24,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="160dp"
             android:layout_height="36dp"
-            android:text="Button" />
+            android:text="Bench" />
     </RelativeLayout>
 
     <LinearLayout
