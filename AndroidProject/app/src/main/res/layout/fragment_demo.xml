@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,17 +11,21 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="550dp"
-        android:orientation="vertical"
-        android:background="@drawable/lines"
+        android:layout_width="379dp"
+        android:layout_height="529dp"
         android:layout_gravity="center"
-        android:padding="5dp">
+        android:background="@drawable/lines"
+        android:orientation="vertical"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="230dp"
-            android:src="@drawable/bsquat"/>
+            android:src="@drawable/bsquat" />
 
 
         <TextView
@@ -30,77 +34,79 @@
             android:layout_height="53dp"
             android:layout_gravity="center"
             android:text="Barbell Squat"
-            android:textStyle="bold"
-            android:textColor="#000000"
             android:textAlignment="center"
-            android:textSize="40dp" />
+            android:textColor="#000000"
+            android:textSize="40dp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/txt_feedBack"
                 android:layout_width="207dp"
                 android:layout_height="84dp"
-                android:textSize="20dp"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/txt_Squat"
                 android:layout_width="142dp"
                 android:layout_height="84dp"
+                android:layout_margin="10dp"
                 android:text="Lift"
-                android:textSize="20dp"
-                android:layout_margin="10dp"/>
+                android:textSize="20dp" />
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal"
-            android:layout_margin="6dp">
+            android:layout_width="357dp"
+            android:layout_height="70dp"
+            android:layout_margin="6dp"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonSet1"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/n1"
                 android:layout_marginLeft="13dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                android:background="@drawable/n1" />
 
             <Button
                 android:id="@+id/buttonSet2"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/n2"
-                android:layout_margin="5dp"/>
+                android:layout_margin="5dp"
+                android:background="@drawable/n2" />
 
             <Button
                 android:id="@+id/buttonSet3"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/n3"
-                android:layout_margin="5dp"/>
+                android:layout_margin="5dp"
+                android:background="@drawable/n3" />
 
             <Button
                 android:id="@+id/buttonSet4"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/n4"
-                android:layout_margin="5dp"        />
+                android:layout_margin="5dp"
+                android:background="@drawable/n4" />
 
             <Button
                 android:id="@+id/buttonSet5"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/n5"
-                android:layout_margin="5dp"     />
+                android:layout_margin="5dp"
+                android:background="@drawable/n5" />
         </LinearLayout>
 
     </LinearLayout>
 
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
