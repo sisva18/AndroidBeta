@@ -64,7 +64,7 @@ public class BarbellRowFragment extends Fragment {
         txtFeedBack=view.findViewById(R.id.txt_feedBack);
 
         setOne = view.findViewById(R.id.buttonSet1);
-        txtView.setText("Squat: 5x5: "+db.getLastEntry("BBROW", "name")*0.8+"KG");
+        txtView.setText("Squat: 5x5: "+db.getLastEntry("BBRow", "name")*0.8+"KG");
 
         setTwo=view.findViewById(R.id.buttonSet2);
         setThree=view.findViewById(R.id.buttonSet3);
@@ -205,7 +205,7 @@ public class BarbellRowFragment extends Fragment {
                     txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
                     if(!dataWasSet)
                     {
-                        db.UpdateLatestMax(db.getLastEntry("BBROW", "name")+2.5, "BBROW", "name");
+                        db.UpdateLatestMax(db.getLastEntry("BBRow", "name")+2.5, "BBRow", "name");
                         txtFeedBack.setText("Congratulations, row max increment 2.5Kg");
                         dataWasSet = true;
                     }

@@ -32,7 +32,7 @@ public class EditActivity extends AppCompatActivity {
         btnSave = (Button) findViewById(R.id.btnSave);
         btnDelete = (Button) findViewById(R.id.btnDelete);
         editable_item = (EditText) findViewById(R.id.editable_item);
-        mDatabaseHelper = new DatabaseHelper(this);
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
 
         //get the intent extra from the ListDataActivity
         Intent receivedIntent = getIntent();
@@ -51,7 +51,7 @@ public class EditActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String item = editable_item.getText().toString();
                 if(!item.equals("")){
-                    mDatabaseHelper.updateName(item,selectedID,selectedName);
+                    mDatabaseHelper.updateName("Squat", item, selectedID, selectedName);
                 }else{
                     toastMessage("You must enter a max");
                 }
@@ -61,7 +61,7 @@ public class EditActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDatabaseHelper.deleteName(selectedID,selectedName);
+                mDatabaseHelper.deleteName("Squat", selectedID, selectedName);
                 editable_item.setText("");
                 toastMessage("removed from maxes");
                 finish();

@@ -1,10 +1,11 @@
 package com.example.a5x5prototype;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,19 +18,19 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import android.os.Bundle;
 
-public class BenchListActivity extends AppCompatActivity {
-    private static final String TAG = "BenchListActivity";
+public class DeadliftActivity extends AppCompatActivity {
+
+    private static final String TAG = "DeadliftListActivity";
     DatabaseHelper mDatabaseHelper;
 
     private ListView mListView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_layout_bench);
+        setContentView(R.layout.list_layout_deadlift);
         mListView = (ListView) findViewById(R.id.listView);
-        mDatabaseHelper = new DatabaseHelper(this);
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
 
         populateListView();
         PopUpMenu();
@@ -40,7 +41,7 @@ public class BenchListActivity extends AppCompatActivity {
         Log.d(TAG, "populateListView: Displaying data in the ListView.");
 
         //get the data and append to a list
-        Cursor data = mDatabaseHelper.getBenchData();
+        Cursor data = mDatabaseHelper.getData("Deadlift");
         ArrayList<String> listData = new ArrayList<>();
         while(data.moveToNext()){
             //get the value from the database in column 1
@@ -58,14 +59,14 @@ public class BenchListActivity extends AppCompatActivity {
                 String name = adapterView.getItemAtPosition(i).toString();
                 Log.d(TAG, "onItemClick: You Clicked on " + name);
 
-                Cursor data = mDatabaseHelper.getBenchID(name); //get the id associated with that name
+                Cursor data = mDatabaseHelper.getID("Deadlift", name); //get the id associated with that name
                 int itemID = -1;
                 while(data.moveToNext()){
                     itemID = data.getInt(0);
                 }
                 if(itemID > -1){
                     Log.d(TAG, "onItemClick: The ID is: " + itemID);
-                    Intent editScreenIntent = new Intent(BenchListActivity.this, EditActivity.class);
+                    Intent editScreenIntent = new Intent(DeadliftActivity.this, EditActivity.class);
 
                     editScreenIntent.putExtra("id", itemID);
                     editScreenIntent.putExtra("name",name);
@@ -85,13 +86,13 @@ public class BenchListActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(BenchListActivity.this, v);
-                popup.inflate(R.menu.pop_up1);
+                PopupMenu popup = new PopupMenu(DeadliftActivity.this, v);
+                popup.inflate(R.menu.pop_up4);
                 popup.show();
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(BenchListActivity.this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DeadliftActivity.this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
                         switch (item.getItemId()) {
                             case R.id.m1:
                                 // do your code
@@ -99,15 +100,15 @@ public class BenchListActivity extends AppCompatActivity {
                                 return true;
                             case R.id.m2:
                                 // do your code
-                                OhpList();
+                                BenchList();
                                 return true;
                             case R.id.m3:
                                 // do your code
-                                RowList();
+                                OhpList();
                                 return true;
                             case R.id.m4:
                                 // do your code
-                                DeadliftList();
+                                RowList();
                                 return true;
                             default:
                                 return false;
@@ -127,29 +128,28 @@ public class BenchListActivity extends AppCompatActivity {
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
 
-
     private void SquatList(){
         Intent intent = new Intent(this, ListDataActivity.class);
         startActivity(intent);
     }
 
+    private void BenchList(){
+        Intent intent = new Intent(this, BenchListActivity.class);
+        startActivity(intent);
+    }
     private void OhpList(){
         Intent intent = new Intent(this, OhpListActivity.class);
         startActivity(intent);
     }
-    private void RowList(){
-        Intent intent = new Intent(this, RowListActivity.class);
-        startActivity(intent);
-    }
 
-    private void DeadliftList(){
+    private void RowList(){
         Intent intent = new Intent(this, DeadliftActivity.class);
         startActivity(intent);
     }
+
     @Override
     public void onBackPressed(){
         super.onBackPressed();
-        startActivity(new Intent(BenchListActivity.this, MainActivity.class));
+        startActivity(new Intent(DeadliftActivity.this, MainActivity.class));
     }
-
 }

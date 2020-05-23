@@ -18,12 +18,13 @@ import android.widget.Button;
 
 public class WorkoutsActivity extends AppCompatActivity {
 
-    DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
+    DatabaseHelper mDatabaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workouts);
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
         ((Button) findViewById(R.id.workoutA)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

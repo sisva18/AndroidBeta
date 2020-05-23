@@ -19,18 +19,18 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class DeadliftActivity extends AppCompatActivity {
+public class OhpListActivity extends AppCompatActivity {
 
-    private static final String TAG = "DeadliftListActivity";
+    private static final String TAG = "OhpListActivity";
     DatabaseHelper mDatabaseHelper;
 
     private ListView mListView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_layout_deadlift);
+        setContentView(R.layout.list_layout_ohp);
         mListView = (ListView) findViewById(R.id.listView);
-        mDatabaseHelper = new DatabaseHelper(this);
+        mDatabaseHelper = DatabaseHelper.getInstance(this);
 
         populateListView();
         PopUpMenu();
@@ -41,7 +41,7 @@ public class DeadliftActivity extends AppCompatActivity {
         Log.d(TAG, "populateListView: Displaying data in the ListView.");
 
         //get the data and append to a list
-        Cursor data = mDatabaseHelper.getDeadliftData();
+        Cursor data = mDatabaseHelper.getData("OHP");
         ArrayList<String> listData = new ArrayList<>();
         while(data.moveToNext()){
             //get the value from the database in column 1
@@ -59,14 +59,14 @@ public class DeadliftActivity extends AppCompatActivity {
                 String name = adapterView.getItemAtPosition(i).toString();
                 Log.d(TAG, "onItemClick: You Clicked on " + name);
 
-                Cursor data = mDatabaseHelper.getDeadliftID(name); //get the id associated with that name
+                Cursor data = mDatabaseHelper.getID("OHP", name); //get the id associated with that name
                 int itemID = -1;
                 while(data.moveToNext()){
                     itemID = data.getInt(0);
                 }
                 if(itemID > -1){
                     Log.d(TAG, "onItemClick: The ID is: " + itemID);
-                    Intent editScreenIntent = new Intent(DeadliftActivity.this, EditActivity.class);
+                    Intent editScreenIntent = new Intent(OhpListActivity.this, EditActivity.class);
 
                     editScreenIntent.putExtra("id", itemID);
                     editScreenIntent.putExtra("name",name);
@@ -86,13 +86,13 @@ public class DeadliftActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(DeadliftActivity.this, v);
-                popup.inflate(R.menu.pop_up4);
+                PopupMenu popup = new PopupMenu(OhpListActivity.this, v);
+                popup.inflate(R.menu.pop_up2);
                 popup.show();
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(DeadliftActivity.this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OhpListActivity.this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
                         switch (item.getItemId()) {
                             case R.id.m1:
                                 // do your code
@@ -104,11 +104,11 @@ public class DeadliftActivity extends AppCompatActivity {
                                 return true;
                             case R.id.m3:
                                 // do your code
-                                OhpList();
+                                RowList();
                                 return true;
                             case R.id.m4:
                                 // do your code
-                                RowList();
+                                DeadliftList();
                                 return true;
                             default:
                                 return false;
@@ -137,12 +137,12 @@ public class DeadliftActivity extends AppCompatActivity {
         Intent intent = new Intent(this, BenchListActivity.class);
         startActivity(intent);
     }
-    private void OhpList(){
-        Intent intent = new Intent(this, OhpListActivity.class);
+    private void RowList(){
+        Intent intent = new Intent(this, RowListActivity.class);
         startActivity(intent);
     }
 
-    private void RowList(){
+    private void DeadliftList(){
         Intent intent = new Intent(this, DeadliftActivity.class);
         startActivity(intent);
     }
@@ -150,6 +150,6 @@ public class DeadliftActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         super.onBackPressed();
-        startActivity(new Intent(DeadliftActivity.this, MainActivity.class));
+        startActivity(new Intent(OhpListActivity.this, MainActivity.class));
     }
 }
