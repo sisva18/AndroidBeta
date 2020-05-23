@@ -47,6 +47,7 @@ public class ActivityFirstTime extends AppCompatActivity {
                         //mDatabaseHelper.addSquatData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "Squat");
                         squatMax.setText("");
+                        //mDatabaseHelper.UpdateLatestMax(mDatabaseHelper.getLastEntry("Squat", "name")+2.5, "Squat", "name"); brug til at update dato
                     } else {
                         Toast.makeText(ActivityFirstTime.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
                     }

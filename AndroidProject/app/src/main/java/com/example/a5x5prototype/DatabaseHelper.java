@@ -95,7 +95,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void UpdateLatestMax(double value, String table, String col){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(col, value);
+        contentValues.put(col, value + " kg " + " Date: "+ getDateTime() );
         long result = db.insert(table, null, contentValues);
     }
 
