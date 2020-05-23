@@ -312,14 +312,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    public void deletaALl(){
+    public void deleteALl(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String sqaut = "DELETE FROM " + TABLE_SQUAT;
+        String squat = "DELETE FROM " + TABLE_SQUAT;
         String row = "DELETE FROM " + TABLE_BBROW;
         String bench = "DELETE FROM " + TABLE_BENCHPRESS;
         String ohp = "DELETE FROM " + TABLE_OHP;
         String deadlift = "DELETE FROM " + TABLE_DEADLIFT;
-        db.execSQL(sqaut);
+        db.execSQL(squat);
         db.execSQL(row);
         db.execSQL(bench);
         db.execSQL(ohp);

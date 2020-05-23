@@ -56,7 +56,7 @@ public class WorkoutsActivity extends AppCompatActivity {
     }
 
     private void delete(){
-        mDatabaseHelper.deletaALl();
+        mDatabaseHelper.deleteALl();
     }
 
 }
