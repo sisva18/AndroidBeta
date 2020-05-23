@@ -42,7 +42,7 @@ public class TestFragmentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_fragments);
     //    createNotificationChannel();
-        button = (Button) findViewById(R.id.button2);
+
         editTextInput = (TextView)findViewById(R.id.textView5);
 
         viewPager = findViewById(R.id.pager);
@@ -63,7 +63,7 @@ public class TestFragmentsActivity extends AppCompatActivity {
     public void StartTimer(){
         new CountDownTimer(120000, 1000){
             public void onTick(long milisUntilFinished){
-                editTextInput.setText(String.valueOf(counter));
+                editTextInput.setText(String.valueOf(" Rest "+counter));
                 counter--;
             }
             public void onFinish(){

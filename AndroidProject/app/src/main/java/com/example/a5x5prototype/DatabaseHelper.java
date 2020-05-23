@@ -104,6 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + table;
         Cursor data = db.rawQuery(query, null);
+        data.close();
         return data;
     }
 
@@ -112,6 +113,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT ID FROM " + table + " WHERE name = '" + item + "'";
         Cursor data = db.rawQuery(query, null);
+        data.close();
         return data;
     }
 
