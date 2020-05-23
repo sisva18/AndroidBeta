@@ -66,7 +66,7 @@ public class BarbellRowFragment extends Fragment {
         // txtViewSet = view.findViewById(R.id. txt_SetsSquat);
         txtFeedBack=view.findViewById(R.id.txt_feedBack);
 
-        txtView.setText("Squat: 5x5: "+db.getLastRowEntry()*0.8+"KG");
+        txtView.setText("Row: 5x5: "+db.getLastRowEntry()*0.8+"KG");
 
         setOne = view.findViewById(R.id.buttonSet1);
         setTwo=view.findViewById(R.id.buttonSet2);

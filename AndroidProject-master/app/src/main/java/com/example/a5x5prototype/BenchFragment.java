@@ -64,7 +64,7 @@ public class BenchFragment extends Fragment {
         txtFeedBack=view.findViewById(R.id.txt_feedBack);
 
         setOne = view.findViewById(R.id.buttonSet1);
-        txtView.setText("Squat: 5x5: "+db.getLastBenchEntry()*0.8+"KG");
+        txtView.setText("Bench: 5x5: "+db.getLastBenchEntry()*0.8+"KG");
 
         setTwo=view.findViewById(R.id.buttonSet2);
         setThree=view.findViewById(R.id.buttonSet3);
