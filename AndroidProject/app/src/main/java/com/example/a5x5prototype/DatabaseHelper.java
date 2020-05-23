@@ -54,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addEntry(String item, String col, String table) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(col, item );
+        contentValues.put(col, item + " kg " + " Date: "+ getDateTime() );
         Log.d(TAG, "addData: Adding " + item + " to " + table);
         long result = db.insert(table, null, contentValues);
         if (result == -1) {
@@ -84,7 +84,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat(
 
-                "yyyy-MM-dd");
+                "yyyy-MM-dd:mm:ss");
 
         Date date = new Date();
 
