@@ -69,6 +69,7 @@ public class BenchListActivity extends AppCompatActivity {
 
                     editScreenIntent.putExtra("id", itemID);
                     editScreenIntent.putExtra("name",name);
+                    editScreenIntent.putExtra("table", "Bench");
                     startActivity(editScreenIntent);
                 }
                 else{

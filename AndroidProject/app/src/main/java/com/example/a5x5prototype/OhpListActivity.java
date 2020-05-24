@@ -70,6 +70,7 @@ public class OhpListActivity extends AppCompatActivity {
 
                     editScreenIntent.putExtra("id", itemID);
                     editScreenIntent.putExtra("name",name);
+                    editScreenIntent.putExtra("table", "OHP");
                     startActivity(editScreenIntent);
                 }
                 else{
