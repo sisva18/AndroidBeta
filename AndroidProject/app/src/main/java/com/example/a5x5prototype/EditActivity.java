@@ -3,6 +3,7 @@ package com.example.a5x5prototype;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class EditActivity extends AppCompatActivity {
 
     private String selectedName;
     private int selectedID;
+    private String selectedTable;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,13 +37,16 @@ public class EditActivity extends AppCompatActivity {
         mDatabaseHelper = DatabaseHelper.getInstance(this);
 
         //get the intent extra from the ListDataActivity
-        Intent receivedIntent = getIntent();
+        Bundle receivedIntent = getIntent().getExtras();
 
         //now get the itemID we passed as an extra
-        selectedID = receivedIntent.getIntExtra("id",-1); //NOTE: -1 is just the default value
+        selectedID = receivedIntent.getInt("id");
 
         //now get the name we passed as an extra
-        selectedName = receivedIntent.getStringExtra("item");
+        selectedName = receivedIntent.getString("name");
+
+        //get table pass as an extra
+        selectedTable = receivedIntent.getString("table");
 
         //set the text to show the current selected name
         editable_item.setText(selectedName);
@@ -51,7 +56,10 @@ public class EditActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String item = editable_item.getText().toString();
                 if(!item.equals("")){
-                    mDatabaseHelper.updateName("Squat", item, selectedID, selectedName);
+                    mDatabaseHelper.updateName(selectedTable, item, selectedID, selectedName);
+                    //finish();
+                    //refreshList();
+                    onBackPressed();
                 }else{
                     toastMessage("You must enter a max");
                 }
@@ -61,12 +69,12 @@ public class EditActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDatabaseHelper.deleteName("Squat", selectedID, selectedName);
+                mDatabaseHelper.deleteName(selectedTable, selectedID, selectedName);
                 editable_item.setText("");
                 toastMessage("removed from maxes");
-                finish();
-                refreshList();
-
+                //finish();
+                //refreshList();
+                onBackPressed();
             }
         });
 
@@ -82,7 +90,10 @@ public class EditActivity extends AppCompatActivity {
 
     private void refreshList(){
         Intent intent=new Intent(this, ListDataActivity.class);
+        overridePendingTransition( 0, 0);
         startActivity(intent);
+        overridePendingTransition( 0, 0);
+        finish();
     }
 
 

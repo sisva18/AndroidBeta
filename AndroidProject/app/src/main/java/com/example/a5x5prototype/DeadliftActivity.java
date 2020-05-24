@@ -31,7 +31,6 @@ public class DeadliftActivity extends AppCompatActivity {
         setContentView(R.layout.list_layout_deadlift);
         mListView = (ListView) findViewById(R.id.listView);
         mDatabaseHelper = DatabaseHelper.getInstance(this);
-
         populateListView();
         PopUpMenu();
 
@@ -70,6 +69,7 @@ public class DeadliftActivity extends AppCompatActivity {
 
                     editScreenIntent.putExtra("id", itemID);
                     editScreenIntent.putExtra("name",name);
+                    editScreenIntent.putExtra("table", "Deadlift");
                     startActivity(editScreenIntent);
                 }
                 else{

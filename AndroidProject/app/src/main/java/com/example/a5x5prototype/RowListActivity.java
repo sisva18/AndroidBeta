@@ -70,6 +70,7 @@ public class RowListActivity extends AppCompatActivity {
 
                     editScreenIntent.putExtra("id", itemID);
                     editScreenIntent.putExtra("name",name);
+                    editScreenIntent.putExtra("table", "BBRow");
                     startActivity(editScreenIntent);
                 }
                 else{
