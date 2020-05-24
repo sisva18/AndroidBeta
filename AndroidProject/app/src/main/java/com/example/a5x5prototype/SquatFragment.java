@@ -149,10 +149,12 @@ public class SquatFragment extends Fragment {
                         // setOne.setVisibility(View.);
                         setFive.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
+                        db.UpdateLatestMax(db.getLastEntry("Squat", "name")+2.5, "Squat", "name");
                         setFiveCompleted = true;
                     } else {
                         setFive.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
+                        db.UpdateLatestMax(db.getLastEntry("Squat", "name"), "Squat", "name");
                         setFiveCompleted = false;
                     }
                 }

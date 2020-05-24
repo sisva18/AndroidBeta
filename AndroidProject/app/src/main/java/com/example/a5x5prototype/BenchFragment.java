@@ -135,10 +135,12 @@ public class BenchFragment extends Fragment {
                         // setOne.setVisibility(View.);
                         setFive.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, bench max increment 2.5Kg");
+                        db.UpdateLatestMax(db.getLastEntry("Bench", "name")+2.5, "Bench", "name");
                         setFiveCompleted = true;
                     } else {
                         setFive.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
+                        db.UpdateLatestMax(db.getLastEntry("Bench","name"), "Bench", "name");
                         setFiveCompleted = false;
                     }
                 }

@@ -135,10 +135,12 @@ public class BarbellRowFragment extends Fragment {
                         // setOne.setVisibility(View.);
                         setFive.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, row max increment 2.5Kg");
+                        db.UpdateLatestMax(db.getLastEntry("BBROW", "name")+2.5, "BBROW", "name");
                         setFiveCompleted = true;
                     } else {
                         setFive.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
+                        db.UpdateLatestMax(db.getLastEntry("BBROW","name"), "BBROW", "name");
                         setFiveCompleted = false;
                     }
                 }
