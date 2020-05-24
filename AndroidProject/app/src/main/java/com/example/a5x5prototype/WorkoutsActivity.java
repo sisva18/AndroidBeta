@@ -63,6 +63,13 @@ public class WorkoutsActivity extends AppCompatActivity {
             }
         });
 
+        imageView2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                WorkoutB();
+            }
+        });
+
     }
 
     private void WorkoutIntent(){
@@ -73,6 +80,11 @@ public class WorkoutsActivity extends AppCompatActivity {
         Intent intent=new Intent(this, TestFragmentsActivity.class);
         startActivity(intent);
     }
+    private void WorkoutB(){
+        Intent intent=new Intent(this, Workoutb.class);
+        startActivity(intent);
+    }
+
 
     private void delete(){
         mDatabaseHelper.deleteALl();

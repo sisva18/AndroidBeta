@@ -2,24 +2,24 @@ package com.example.a5x5prototype;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ActivityFirstTime extends AppCompatActivity {
+public class EditMaxesActivityv extends AppCompatActivity {
+
     DatabaseHelper mDatabaseHelper;
     private Button btnAddSqaut, btnAddBench, btnAddOhp, btnAddBRow, btnAddDeadlift;
     private EditText squatMax, benchMax, ohpMax, bbRowMax, deadliftMax;
-    public int wasSet = 0;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_time);
+        setContentView(R.layout.activity_edit_maxes_activityv);
         btnAddSqaut = (Button) findViewById(R.id.btnFirst);
         squatMax = (EditText) findViewById(R.id.editText5);
 
@@ -48,9 +48,8 @@ public class ActivityFirstTime extends AppCompatActivity {
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "Squat");
                         squatMax.setText("");
                         //mDatabaseHelper.UpdateLatestMax(mDatabaseHelper.getLastEntry("Squat", "name")+2.5, "Squat", "name"); brug til at update dato
-                        wasSet++;
                     } else {
-                        Toast.makeText(ActivityFirstTime.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditMaxesActivityv.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -66,9 +65,8 @@ public class ActivityFirstTime extends AppCompatActivity {
                         //mDatabaseHelper.addBenchData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "Bench");
                         benchMax.setText("");
-                        wasSet++;
                     } else {
-                        Toast.makeText(ActivityFirstTime.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditMaxesActivityv.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -85,9 +83,8 @@ public class ActivityFirstTime extends AppCompatActivity {
                         //mDatabaseHelper.addOhpData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "OHP");
                         ohpMax.setText("");
-                        wasSet++;
                     } else {
-                        Toast.makeText(ActivityFirstTime.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditMaxesActivityv.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -103,9 +100,8 @@ public class ActivityFirstTime extends AppCompatActivity {
                         //mDatabaseHelper.addRowData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "BBRow");
                         bbRowMax.setText("");
-                        wasSet++;
                     } else {
-                        Toast.makeText(ActivityFirstTime.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditMaxesActivityv.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -121,23 +117,13 @@ public class ActivityFirstTime extends AppCompatActivity {
                         //mDatabaseHelper.addDeadliftData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "Deadlift");
                         deadliftMax.setText("");
-                        wasSet++;
                     } else {
-                        Toast.makeText(ActivityFirstTime.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditMaxesActivityv.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
                     }
                 }
 
             }
         });
 
-        if(wasSet==5){
-            MainActivity();
-        }
-
-    }
-
-    private void MainActivity(){
-        Intent intent=new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 }

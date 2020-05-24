@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.a5x5prototype">
 
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -11,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestFragmentsActivity"></activity>
+        <activity android:name=".EditMaxesActivityv"></activity>
+        <activity android:name=".FirstTimerActivity" />
+        <activity android:name=".Workoutb" />
+        <activity android:name=".TestFragmentsActivity" />
         <activity android:name=".DeadliftActivity" />
         <activity android:name=".RowListActivity" />
         <activity android:name=".OhpListActivity" />
@@ -34,8 +38,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".ExampleService"/>
-        <receiver android:name=".ReminderBroadcast"/>
+
+        <service android:name=".ExampleService" />
+
+        <receiver android:name=".ReminderBroadcast" />
     </application>
 
 </manifest>
