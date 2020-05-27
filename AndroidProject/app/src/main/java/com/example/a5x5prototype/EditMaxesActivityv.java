@@ -44,7 +44,6 @@ public class EditMaxesActivityv extends AppCompatActivity {
                 Double newEntry = Double.parseDouble(squatMax.getText().toString());
                 if (squatMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        //mDatabaseHelper.addSquatData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "Squat");
                         squatMax.setText("");
                         //mDatabaseHelper.UpdateLatestMax(mDatabaseHelper.getLastEntry("Squat", "name")+2.5, "Squat", "name"); brug til at update dato
@@ -62,7 +61,6 @@ public class EditMaxesActivityv extends AppCompatActivity {
                 Double newEntry = Double.parseDouble(benchMax.getText().toString());
                 if (benchMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        //mDatabaseHelper.addBenchData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "Bench");
                         benchMax.setText("");
                     } else {
@@ -80,7 +78,6 @@ public class EditMaxesActivityv extends AppCompatActivity {
                 Double newEntry = Double.parseDouble(ohpMax.getText().toString());
                 if (ohpMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        //mDatabaseHelper.addOhpData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "OHP");
                         ohpMax.setText("");
                     } else {
@@ -97,7 +94,6 @@ public class EditMaxesActivityv extends AppCompatActivity {
                 Double newEntry = Double.parseDouble(bbRowMax.getText().toString());
                 if (bbRowMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        //mDatabaseHelper.addRowData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "BBRow");
                         bbRowMax.setText("");
                     } else {
@@ -114,7 +110,6 @@ public class EditMaxesActivityv extends AppCompatActivity {
                 Double newEntry = Double.parseDouble(deadliftMax.getText().toString());
                 if (deadliftMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        //mDatabaseHelper.addDeadliftData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "Deadlift");
                         deadliftMax.setText("");
                     } else {

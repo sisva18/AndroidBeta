@@ -16,5 +16,6 @@ public class Workoutb extends AppCompatActivity {
         viewPager = findViewById(R.id.pager);
         adapter = new WorkoutbAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(3);
     }
 }

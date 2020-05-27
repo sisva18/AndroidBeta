@@ -25,8 +25,6 @@ public class SquatFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-
-
     private TextView txtView, txtFeedBack;
     private Button setOne, setTwo, setThree, setFour, setFive;
 
@@ -41,7 +39,6 @@ public class SquatFragment extends Fragment {
     public SquatFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

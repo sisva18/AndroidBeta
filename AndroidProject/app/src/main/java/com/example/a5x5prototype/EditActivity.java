@@ -20,7 +20,6 @@ public class EditActivity extends AppCompatActivity {
 
     private Button btnSave,btnDelete;
     private EditText editable_item;
-    EditActivity editDataActivity;
     DatabaseHelper mDatabaseHelper;
 
     private String selectedName;
@@ -80,10 +79,6 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * customizable toast
-     * @param message
-     */
     private void toastMessage(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
@@ -95,7 +90,5 @@ public class EditActivity extends AppCompatActivity {
         overridePendingTransition( 0, 0);
         finish();
     }
-
-
 }
 
