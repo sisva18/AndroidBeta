@@ -141,7 +141,7 @@
         android:layout_height="69dp"
         android:ems="10"
         android:hint="Deadlift 1RM"
-        android:inputType="number"
+        android:inputType="numberDecimal"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
