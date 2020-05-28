@@ -13,10 +13,7 @@ public class FragmentDemoAdapter extends FragmentPagerAdapter {
     DatabaseHelper mDatabaseHelper;
     public FragmentDemoAdapter(@NonNull FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-
     }
-
-
 
     @NonNull
     @Override

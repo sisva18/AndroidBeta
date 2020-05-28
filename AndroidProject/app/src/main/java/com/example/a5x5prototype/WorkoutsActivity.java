@@ -43,19 +43,6 @@ public class WorkoutsActivity extends AppCompatActivity {
         imageView.setBackground(drawable);
         imageView.setClipToOutline(true);
 
-//        ((Button) findViewById(R.id.workoutA)).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                WorkoutIntent();
-//            }
-//        });
-
-//        ((Button) findViewById(R.id.deleteAll)).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                delete();
-//            }
-//        });
         ((CardView) findViewById(R.id.fragmentTest)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,10 +59,6 @@ public class WorkoutsActivity extends AppCompatActivity {
 
     }
 
-    private void WorkoutIntent(){
-        Intent intent=new Intent(this, WorkoutAActivity.class);
-        startActivity(intent);
-    }
     private void Frags(){
         Intent intent=new Intent(this, TestFragmentsActivity.class);
         startActivity(intent);
@@ -83,11 +66,6 @@ public class WorkoutsActivity extends AppCompatActivity {
     private void WorkoutB(){
         Intent intent=new Intent(this, Workoutb.class);
         startActivity(intent);
-    }
-
-
-    private void delete(){
-        mDatabaseHelper.deleteALl();
     }
 
 }

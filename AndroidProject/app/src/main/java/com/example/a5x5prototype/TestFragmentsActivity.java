@@ -1,11 +1,9 @@
 package com.example.a5x5prototype;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
@@ -32,12 +30,9 @@ import me.relex.circleindicator.CircleIndicator;
 public class TestFragmentsActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private FragmentDemoAdapter adapter;
-    private static TextView editTextInput;
-    private Button button;
-    private String description;
-    public static int counter =120;
+    private TextView editTextInput;
+    public int counter =120;
 
-    public static Boolean execueted =false;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -51,99 +46,19 @@ public class TestFragmentsActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.pager);
         adapter = new FragmentDemoAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-
-      //  CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
-      //  indicator.setViewPager(viewPager);
-
-        //        editTextInput=(EditText)findViewById(R.id.edit_input_txt);
-
-/*
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.replace(R.id.pager, new BenchFragment());
-
-
-*/
-
+        viewPager.setOffscreenPageLimit(3);
+        StartTimer();
     }
 
-
-    public static void StartTimer(){
+    public void StartTimer(){
         new CountDownTimer(120000, 1000){
-
-
             public void onTick(long milisUntilFinished){
-
-                editTextInput.setText(String.valueOf(" Rest "+milisUntilFinished/1000));
-                execueted = true;
-
-
+                editTextInput.setText(String.valueOf(" Rest "+counter));
+                counter--;
             }
-
-
             public void onFinish(){
-                editTextInput.setText("Lift again");
-                execueted = false;
+                editTextInput.setText("done");
             }
         }.start();
-
     }
-
-
 }
-
-/*
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".TestFragmentsActivity">
-
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="650dp">
-
-    </androidx.viewpager.widget.ViewPager>
-
-    <me.relex.circleindicator.CircleIndicator
-        android:id="@+id/indicator"
-        app:ci_drawable="@drawable/circlebutton2"
-        app:ci_height="7dp"
-        app:ci_width="7dp"
-        app:ci_margin="4dp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp" />
-
-    <ImageView
-        android:layout_gravity="center"
-        android:src="@drawable/alarm"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:id="@+id/alarm"
-        android:onClick="Alarm"/>
-
-
-</LinearLayout>
-
-    <!--    <EditText-->
-    <!--        android:id="@+id/edit_input_txt"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:hint="Input"-->
-    <!--        tools:ignore="MissingConstraints" />-->
-
-    <!--    <Button-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="start Service"-->
-    <!--        android:onClick="startService"/>-->
-    <!--    <Button-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="stop Service"-->
-    <!--        android:onClick="stopService"/>-->
- */

@@ -76,20 +76,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 data =cursor.getDouble(0);
             }
         }
-
         return data;
     }
 
     public String getDateTime() {
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-
-                "yyyy-MM-dd:mm:ss");
-
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd:mm:ss");
         Date date = new Date();
-
         return dateFormat.format(date);
-
     }
 
     public void UpdateLatestMax(double value, String table, String col){

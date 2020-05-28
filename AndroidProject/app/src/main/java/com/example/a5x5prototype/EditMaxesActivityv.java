@@ -3,6 +3,8 @@ package com.example.a5x5prototype;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,16 +43,18 @@ public class EditMaxesActivityv extends AppCompatActivity {
         btnAddSqaut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
                 Double newEntry = Double.parseDouble(squatMax.getText().toString());
-                if (squatMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        //mDatabaseHelper.addSquatData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "Squat");
                         squatMax.setText("");
+                        Toast.makeText(EditMaxesActivityv.this, newEntry.toString() + " added to maxes", Toast.LENGTH_SHORT).show();
                         //mDatabaseHelper.UpdateLatestMax(mDatabaseHelper.getLastEntry("Squat", "name")+2.5, "Squat", "name"); brug til at update dato
                     } else {
                         Toast.makeText(EditMaxesActivityv.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
                     }
+                } catch(NumberFormatException e) {
+                    Toast.makeText(EditMaxesActivityv.this, "ERROR: Invalid input", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -59,16 +63,16 @@ public class EditMaxesActivityv extends AppCompatActivity {
         btnAddBench.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
                 Double newEntry = Double.parseDouble(benchMax.getText().toString());
-                if (benchMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        //mDatabaseHelper.addBenchData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "Bench");
                         benchMax.setText("");
                     } else {
                         Toast.makeText(EditMaxesActivityv.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
                     }
-
+                } catch(NumberFormatException e) {
+                    Toast.makeText(EditMaxesActivityv.this, "ERROR: Invalid input", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -77,51 +81,51 @@ public class EditMaxesActivityv extends AppCompatActivity {
         btnAddOhp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
                 Double newEntry = Double.parseDouble(ohpMax.getText().toString());
-                if (ohpMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        //mDatabaseHelper.addOhpData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "OHP");
                         ohpMax.setText("");
                     } else {
                         Toast.makeText(EditMaxesActivityv.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
                     }
+                } catch(NumberFormatException e) {
+                    Toast.makeText(EditMaxesActivityv.this, "ERROR: Invalid input", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
         btnAddBRow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
                 Double newEntry = Double.parseDouble(bbRowMax.getText().toString());
-                if (bbRowMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        //mDatabaseHelper.addRowData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "BBRow");
                         bbRowMax.setText("");
                     } else {
                         Toast.makeText(EditMaxesActivityv.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
                     }
+                } catch(NumberFormatException e) {
+                    Toast.makeText(EditMaxesActivityv.this, "ERROR: Invalid input", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
         btnAddDeadlift.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
                 Double newEntry = Double.parseDouble(deadliftMax.getText().toString());
-                if (deadliftMax.length() != 0) {
                     if (newEntry % 1 == 0 || newEntry % 1 == 0.5) {
-                        //mDatabaseHelper.addDeadliftData(newEntry.toString());
                         mDatabaseHelper.addEntry(newEntry.toString(), "name", "Deadlift");
                         deadliftMax.setText("");
                     } else {
                         Toast.makeText(EditMaxesActivityv.this, "ERROR: Can only accept .5 kg", Toast.LENGTH_SHORT).show();
                     }
+                } catch(NumberFormatException e) {
+                    Toast.makeText(EditMaxesActivityv.this, "ERROR: Invalid input", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
