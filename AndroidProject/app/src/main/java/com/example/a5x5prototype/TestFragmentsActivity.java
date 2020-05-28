@@ -1,9 +1,11 @@
 package com.example.a5x5prototype;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,11 +32,12 @@ import me.relex.circleindicator.CircleIndicator;
 public class TestFragmentsActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private FragmentDemoAdapter adapter;
-    private TextView editTextInput;
+    private static TextView editTextInput;
     private Button button;
     private String description;
-    public int counter =120;
+    public static int counter =120;
 
+    public static Boolean execueted =false;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -48,7 +51,7 @@ public class TestFragmentsActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.pager);
         adapter = new FragmentDemoAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-        StartTimer();
+
       //  CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
       //  indicator.setViewPager(viewPager);
 
@@ -57,75 +60,35 @@ public class TestFragmentsActivity extends AppCompatActivity {
 /*
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.pager, new BenchFragment());
+
+
 */
+
     }
 
-    public void StartTimer(){
+
+    public static void StartTimer(){
         new CountDownTimer(120000, 1000){
+
+
             public void onTick(long milisUntilFinished){
-                editTextInput.setText(String.valueOf(" Rest "+counter));
-                counter--;
+
+                editTextInput.setText(String.valueOf(" Rest "+milisUntilFinished/1000));
+                execueted = true;
+
+
             }
+
+
             public void onFinish(){
-                editTextInput.setText("done");
+                editTextInput.setText("Lift again");
+                execueted = false;
             }
         }.start();
-    }
-
-//    public void startService(View view) {
-//        String input = editTextInput.getText().toString();
-//
-//        Intent serviceIntent = new Intent(this ,ExampleService.class);
-//        serviceIntent.putExtra("inputExtra", input);
-//
-//        startService(serviceIntent);
-//
-//        //ContextCompat.startForegroundService(this,serviceIntent);
-//    }
-//
-//
-//    public void stopService(View view) {
-//        Intent serviceIntent = new Intent(this,ExampleService.class);
-//
-//        stopService(serviceIntent);
-//    }
-
-/*
-    public void Alarm(View view) {
-        Toast.makeText(this,"Reminder set!",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(TestFragmentsActivity.this, ReminderBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(TestFragmentsActivity.this,0,intent,0);
-
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        long timeAtBtn = System.currentTimeMillis();
-        long tenSecInMills = 1000*5;
-
-        alarmManager.set(AlarmManager.RTC_WAKEUP,
-                timeAtBtn+tenSecInMills,
-                pendingIntent);
 
     }
 
-    @SuppressLint("NewApi")
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void createNotificationChannel(){
 
-            CharSequence name = "ReminderChannel";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = null;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                channel = new NotificationChannel("notify", name, importance);
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                channel.setDescription(description);
-            }
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-
-
-    }*/
 }
 
 /*

@@ -2,23 +2,34 @@ package com.example.a5x5prototype;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class OhpFragment extends Fragment {
+import java.util.ArrayList;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class SquatFragmentwoB extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    private TextView txtView, txtFeedBack;
+
+
+    private TextView txtView, txtFeedBack, txtViewTimer;
     private Button setOne, setTwo, setThree, setFour, setFive;
 
     private boolean setOneCompleted = false;
@@ -29,19 +40,46 @@ public class OhpFragment extends Fragment {
 
     public boolean dataWasSet = false;
 
-    public OhpFragment() {
+    public SquatFragmentwoB() {
         // Required empty public constructor
     }
 
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if(savedInstanceState!=null){
+            setOneCompleted = savedInstanceState.getBoolean("setOneCompleted");
+            setTwoCompleted = savedInstanceState.getBoolean("setTwoCompleted");
+            setThreeCompleted = savedInstanceState.getBoolean("setThreeCompleted");
+            setFourCompleted = savedInstanceState.getBoolean("setFourCompleted");
+            setFiveCompleted = savedInstanceState.getBoolean("setFiveCompleted");
+            dataWasSet = savedInstanceState.getBoolean("dataWasSet");
+
+        }
+
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("setOneCompleted",setOneCompleted);
+        outState.putBoolean("setTwoCompleted",setTwoCompleted);
+        outState.putBoolean("setThreeCompleted",setThreeCompleted);
+        outState.putBoolean("setFourCompleted",setFourCompleted);
+        outState.putBoolean("setFiveCompleted",setFiveCompleted);
+        outState.putBoolean("dataWasSet",dataWasSet);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         DatabaseHelper db = new DatabaseHelper(getActivity());
-        View view = inflater.inflate(R.layout.fragment_ohp, container, false);
+        View view = inflater.inflate(R.layout.fragment_demo, container, false);
         txtView = view.findViewById(R.id.txt_Squat);
+
         txtFeedBack=view.findViewById(R.id.txt_feedBack);
-        txtView.setText("Overhead press: 5x5: "+db.getLastEntry("OHP", "name")*0.8+"KG");
+        txtView.setText("Squat: 5x5: "+db.getLastEntry("Squat", "name")*0.8+"KG");
 
         setOne = view.findViewById(R.id.buttonSet1);
         setTwo=view.findViewById(R.id.buttonSet2);
@@ -55,6 +93,7 @@ public class OhpFragment extends Fragment {
         setFourCompleted = false;
         setFiveCompleted = false;
 
+
         setOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +106,7 @@ public class OhpFragment extends Fragment {
                         if(Workoutb.execueted==false){
                             Workoutb.StartTimer();
                         }
+
                     } else {
                         setOne.setBackgroundResource(R.drawable.fail);
                         setTwo.setBackgroundResource(R.drawable.n2);
@@ -75,6 +115,8 @@ public class OhpFragment extends Fragment {
                         if(Workoutb.execueted==false){
                             Workoutb.StartTimer();
                         }
+
+
                     }
                 }
             }
@@ -93,11 +135,13 @@ public class OhpFragment extends Fragment {
                         if(Workoutb.execueted==false){
                             Workoutb.StartTimer();
                         }
+
                     } else {
                         setTwo.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
                         setThree.setBackgroundResource(R.drawable.n3);
                         setTwoCompleted = false;
+
                         if(Workoutb.execueted==false){
                             Workoutb.StartTimer();
                         }
@@ -118,6 +162,7 @@ public class OhpFragment extends Fragment {
                         if(Workoutb.execueted==false){
                             Workoutb.StartTimer();
                         }
+
                     } else {
                         setThree.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
@@ -140,6 +185,7 @@ public class OhpFragment extends Fragment {
                         setFour.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, complete the next 1 sets to increment max!");
                         setFourCompleted = true;
+
                         if(Workoutb.execueted==false){
                             Workoutb.StartTimer();
                         }
@@ -151,6 +197,7 @@ public class OhpFragment extends Fragment {
                         if(Workoutb.execueted==false){
                             Workoutb.StartTimer();
                         }
+
                     }
                 }
             }
@@ -163,8 +210,8 @@ public class OhpFragment extends Fragment {
                     if (!setFiveCompleted) {
                         // setOne.setVisibility(View.);
                         setFive.setBackgroundResource(R.drawable.success);
-                        txtFeedBack.setText("Congratulations, overhead press max increment 2.5Kg");
-                        db.UpdateLatestMax(db.getLastEntry("OHP", "name")+2.5, "OHP", "name");
+                        txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
+                        db.UpdateLatestMax(db.getLastEntry("Squat", "name")+2.5, "Squat", "name");
                         setFiveCompleted = true;
                         if(Workoutb.execueted==false){
                             Workoutb.StartTimer();
@@ -172,11 +219,14 @@ public class OhpFragment extends Fragment {
                     } else {
                         setFive.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
-                        db.UpdateLatestMax(db.getLastEntry("OHP", "name"), "OHP", "name");
+                        db.UpdateLatestMax(db.getLastEntry("Squat", "name"), "Squat", "name");
                         setFiveCompleted = false;
+
                         if(Workoutb.execueted==false){
                             Workoutb.StartTimer();
                         }
+
+
                     }
                 }
 
