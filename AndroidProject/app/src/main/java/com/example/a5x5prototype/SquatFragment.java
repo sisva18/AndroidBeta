@@ -1,23 +1,14 @@
 package com.example.a5x5prototype;
 
-        import android.os.Bundle;
+import android.os.Bundle;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-        import androidx.annotation.Nullable;
-        import androidx.fragment.app.Fragment;
-
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.Button;
-        import android.widget.TextView;
-
-        import java.util.ArrayList;
-
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class SquatFragment extends Fragment {
 
     @Override
@@ -33,8 +24,6 @@ public class SquatFragment extends Fragment {
     private boolean setThreeCompleted = false;
     private boolean setFourCompleted = false;
     private boolean setFiveCompleted = false;
-
-    public boolean dataWasSet = false;
 
     public SquatFragment() {
         // Required empty public constructor
@@ -70,11 +59,17 @@ public class SquatFragment extends Fragment {
                         setOne.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, complete the next 4 sets to increment max!");
                         setOneCompleted = true;
+                        if(TestFragmentsActivity.execueted==false){
+                            TestFragmentsActivity.StartTimer();
+                        }
                     } else {
                         setOne.setBackgroundResource(R.drawable.fail);
                         setTwo.setBackgroundResource(R.drawable.n2);
                         txtFeedBack.setText("Lift failed, try again next time!");
                         setOneCompleted = false;
+                        if(TestFragmentsActivity.execueted==false){
+                            TestFragmentsActivity.StartTimer();
+                        }
                     }
                 }
             }
@@ -90,11 +85,17 @@ public class SquatFragment extends Fragment {
                         setTwo.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, complete the next 3 sets to increment max!");
                         setTwoCompleted = true;
+                        if(TestFragmentsActivity.execueted==false){
+                            TestFragmentsActivity.StartTimer();
+                        }
                     } else {
                         setTwo.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
                         setThree.setBackgroundResource(R.drawable.n3);
                         setTwoCompleted = false;
+                        if(TestFragmentsActivity.execueted==false){
+                            TestFragmentsActivity.StartTimer();
+                        }
                     }
                 }
             }
@@ -109,11 +110,17 @@ public class SquatFragment extends Fragment {
                         setThree.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, complete the next 2 sets to increment max!");
                         setThreeCompleted = true;
+                        if(TestFragmentsActivity.execueted==false){
+                            TestFragmentsActivity.StartTimer();
+                        }
                     } else {
                         setThree.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
                         setFour.setBackgroundResource(R.drawable.n4);
                         setThreeCompleted = false;
+                        if(TestFragmentsActivity.execueted==false){
+                            TestFragmentsActivity.StartTimer();
+                        }
                     }
                 }
             }
@@ -128,11 +135,17 @@ public class SquatFragment extends Fragment {
                         setFour.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, complete the next 1 sets to increment max!");
                         setFourCompleted = true;
+                        if(TestFragmentsActivity.execueted==false){
+                            TestFragmentsActivity.StartTimer();
+                        }
                     } else {
                         setFour.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
                         setFive.setBackgroundResource(R.drawable.n5);
                         setFourCompleted = false;
+                        if(TestFragmentsActivity.execueted==false){
+                            TestFragmentsActivity.StartTimer();
+                        }
                     }
                 }
             }
@@ -148,20 +161,18 @@ public class SquatFragment extends Fragment {
                         txtFeedBack.setText("Congratulations, squat max increment 2.5Kg");
                         db.UpdateLatestMax(db.getLastEntry("Squat", "name")+2.5, "Squat", "name");
                         setFiveCompleted = true;
+                        if(TestFragmentsActivity.execueted==false){
+                            TestFragmentsActivity.StartTimer();
+                        }
                     } else {
                         setFive.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
                         db.UpdateLatestMax(db.getLastEntry("Squat", "name"), "Squat", "name");
                         setFiveCompleted = false;
+                        if(TestFragmentsActivity.execueted==false){
+                            TestFragmentsActivity.StartTimer();
+                        }
                     }
-                }
-
-                if(dataWasSet){
-                    setOne.setEnabled(false);
-                    setTwo.setEnabled(false);
-                    setThree.setEnabled(false);
-                    setFour.setEnabled(false);
-                    setFive.setEnabled(false);
                 }
             }
         });

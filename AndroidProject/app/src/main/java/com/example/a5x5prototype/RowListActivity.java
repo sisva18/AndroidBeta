@@ -121,10 +121,6 @@ public class RowListActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * customizable toast
-     * @param message
-     */
     private void toastMessage(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }

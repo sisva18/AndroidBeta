@@ -30,9 +30,10 @@ import me.relex.circleindicator.CircleIndicator;
 public class TestFragmentsActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private FragmentDemoAdapter adapter;
-    private TextView editTextInput;
-    public int counter =120;
+    private static TextView editTextInput;
+    public static int counter =120;
 
+    public static Boolean execueted =false;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -47,17 +48,24 @@ public class TestFragmentsActivity extends AppCompatActivity {
         adapter = new FragmentDemoAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(3);
-        StartTimer();
     }
 
-    public void StartTimer(){
-        new CountDownTimer(120000, 1000){
-            public void onTick(long milisUntilFinished){
-                editTextInput.setText(String.valueOf(" Rest "+counter));
-                counter--;
+    public static void StartTimer() {
+        new CountDownTimer(120000, 1000) {
+
+
+            public void onTick(long milisUntilFinished) {
+
+                editTextInput.setText(String.valueOf(" Rest " + milisUntilFinished / 1000));
+                execueted = true;
+
+
             }
-            public void onFinish(){
-                editTextInput.setText("done");
+
+
+            public void onFinish() {
+                editTextInput.setText("Lift again");
+                execueted = false;
             }
         }.start();
     }

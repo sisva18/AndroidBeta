@@ -28,8 +28,6 @@ public class DeadliftFragment extends Fragment {
     private boolean setFourCompleted = false;
     private boolean setFiveCompleted = false;
 
-    public boolean dataWasSet = false;
-
     public DeadliftFragment() {
         // Required empty public constructor
     }
@@ -65,11 +63,17 @@ public class DeadliftFragment extends Fragment {
                         setOne.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, complete the next 4 sets to increment max!");
                         setOneCompleted = true;
+                        if(Workoutb.execueted==false){
+                            Workoutb.StartTimer();
+                        }
                     } else {
                         setOne.setBackgroundResource(R.drawable.fail);
                         setTwo.setBackgroundResource(R.drawable.n2);
                         txtFeedBack.setText("Lift failed, try again next time!");
                         setOneCompleted = false;
+                        if(Workoutb.execueted==false){
+                            Workoutb.StartTimer();
+                        }
                     }
                 }
             }
@@ -85,11 +89,17 @@ public class DeadliftFragment extends Fragment {
                         setTwo.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, complete the next 3 sets to increment max!");
                         setTwoCompleted = true;
+                        if(Workoutb.execueted==false){
+                            Workoutb.StartTimer();
+                        }
                     } else {
                         setTwo.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
                         setThree.setBackgroundResource(R.drawable.n3);
                         setTwoCompleted = false;
+                        if(Workoutb.execueted==false){
+                            Workoutb.StartTimer();
+                        }
                     }
                 }
             }
@@ -104,11 +114,17 @@ public class DeadliftFragment extends Fragment {
                         setThree.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, complete the next 2 sets to increment max!");
                         setThreeCompleted = true;
+                        if(Workoutb.execueted==false){
+                            Workoutb.StartTimer();
+                        }
                     } else {
                         setThree.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
                         setFour.setBackgroundResource(R.drawable.n4);
                         setThreeCompleted = false;
+                        if(Workoutb.execueted==false){
+                            Workoutb.StartTimer();
+                        }
                     }
                 }
             }
@@ -123,11 +139,17 @@ public class DeadliftFragment extends Fragment {
                         setFour.setBackgroundResource(R.drawable.success);
                         txtFeedBack.setText("Congratulations, complete the next 1 sets to increment max!");
                         setFourCompleted = true;
+                        if(Workoutb.execueted==false){
+                            Workoutb.StartTimer();
+                        }
                     } else {
                         setFour.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
                         setFive.setBackgroundResource(R.drawable.n5);
                         setFourCompleted = false;
+                        if(Workoutb.execueted==false){
+                            Workoutb.StartTimer();
+                        }
                     }
                 }
             }
@@ -143,20 +165,18 @@ public class DeadliftFragment extends Fragment {
                         txtFeedBack.setText("Congratulations, deadlift max increment 2.5Kg");
                         db.UpdateLatestMax(db.getLastEntry("Deadlift", "name")+2.5, "Deadlift", "name");
                         setFiveCompleted = true;
+                        if(Workoutb.execueted==false){
+                            Workoutb.StartTimer();
+                        }
                     } else {
                         setFive.setBackgroundResource(R.drawable.fail);
                         txtFeedBack.setText("Lift failed, try again next time!");
                         db.UpdateLatestMax(db.getLastEntry("Deadlift", "name"), "Deadlift", "name");
                         setFiveCompleted = false;
+                        if(Workoutb.execueted==false){
+                            Workoutb.StartTimer();
+                        }
                     }
-                }
-
-                if(dataWasSet){
-                    setOne.setEnabled(false);
-                    setTwo.setEnabled(false);
-                    setThree.setEnabled(false);
-                    setFour.setEnabled(false);
-                    setFive.setEnabled(false);
                 }
             }
         });

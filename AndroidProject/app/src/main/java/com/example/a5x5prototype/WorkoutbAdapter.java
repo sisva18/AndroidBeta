@@ -13,7 +13,7 @@ public class WorkoutbAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        SquatFragment demoFragment = new SquatFragment();
+        SquatFragmentwoB demoFragment = new SquatFragmentwoB();
         OhpFragment ohpFragment = new OhpFragment();
         DeadliftFragment deadliftFragment = new DeadliftFragment();
         switch (position)
