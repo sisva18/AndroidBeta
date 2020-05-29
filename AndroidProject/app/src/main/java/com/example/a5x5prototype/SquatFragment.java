@@ -57,7 +57,7 @@ public class SquatFragment extends Fragment {
                     if (!setOneCompleted) {
                         // setOne.setVisibility(View.);
                         setOne.setBackgroundResource(R.drawable.success);
-                        txtFeedBack.setText("Congratulations, complete the next 4 sets to increment max!");
+                        txtFeedBack.setText("Congratulations, only 4 sets more to go!");
                         setOneCompleted = true;
                         if(TestFragmentsActivity.execueted==false){
                             TestFragmentsActivity.StartTimer();
@@ -83,7 +83,7 @@ public class SquatFragment extends Fragment {
                     if (!setTwoCompleted) {
                         // setOne.setVisibility(View.);
                         setTwo.setBackgroundResource(R.drawable.success);
-                        txtFeedBack.setText("Congratulations, complete the next 3 sets to increment max!");
+                        txtFeedBack.setText("Congratulations, only 3 sets more to go!");
                         setTwoCompleted = true;
                         if(TestFragmentsActivity.execueted==false){
                             TestFragmentsActivity.StartTimer();
@@ -108,7 +108,7 @@ public class SquatFragment extends Fragment {
                     if (!setThreeCompleted) {
                         // setOne.setVisibility(View.);
                         setThree.setBackgroundResource(R.drawable.success);
-                        txtFeedBack.setText("Congratulations, complete the next 2 sets to increment max!");
+                        txtFeedBack.setText("Congratulations, only 2 sets more to go!");
                         setThreeCompleted = true;
                         if(TestFragmentsActivity.execueted==false){
                             TestFragmentsActivity.StartTimer();
@@ -133,7 +133,7 @@ public class SquatFragment extends Fragment {
                     if (!setFourCompleted) {
                         // setOne.setVisibility(View.);
                         setFour.setBackgroundResource(R.drawable.success);
-                        txtFeedBack.setText("Congratulations, complete the next 1 sets to increment max!");
+                        txtFeedBack.setText("Congratulations, only 1 set more to go!");
                         setFourCompleted = true;
                         if(TestFragmentsActivity.execueted==false){
                             TestFragmentsActivity.StartTimer();

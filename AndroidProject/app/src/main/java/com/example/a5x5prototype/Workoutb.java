@@ -7,6 +7,8 @@ package com.example.a5x5prototype;
         import android.os.CountDownTimer;
         import android.widget.TextView;
 
+        import me.relex.circleindicator.CircleIndicator;
+
 public class Workoutb extends AppCompatActivity {
     private ViewPager viewPager;
     private WorkoutbAdapter adapter;
@@ -21,6 +23,9 @@ public class Workoutb extends AppCompatActivity {
         adapter = new WorkoutbAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(3);
+
+        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+        indicator.setViewPager(viewPager);
     }
 
     public static void StartTimer(){

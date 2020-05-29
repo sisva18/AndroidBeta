@@ -48,6 +48,9 @@ public class TestFragmentsActivity extends AppCompatActivity {
         adapter = new FragmentDemoAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(3);
+
+        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+        indicator.setViewPager(viewPager);
     }
 
     public static void StartTimer() {
