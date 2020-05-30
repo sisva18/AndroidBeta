@@ -22,8 +22,15 @@
             android:id="@+id/exlist"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="138dp"
+            android:layout_marginStart="171dp"
+            android:layout_marginLeft="171dp"
+            android:layout_marginEnd="152dp"
+            android:layout_marginRight="152dp"
             android:text="Deadlift" />
     </RelativeLayout>
 
