@@ -11,7 +11,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your 1 Rep maxes"
+        android:text="Add new maxes:"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,10 +33,10 @@
 
     <EditText
         android:id="@+id/editText5"
-        android:layout_width="112dp"
-        android:layout_height="68dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:ems="10"
-        android:hint="Squat 1RM"
+        android:hint="Squat"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,6 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -59,14 +58,13 @@
 
     <EditText
         android:id="@+id/editText6"
-        android:layout_width="128dp"
-        android:layout_height="68dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:ems="10"
-        android:hint="Benchpress 1RM"
+        android:hint="Bench Press"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.137" />
@@ -85,14 +83,14 @@
 
     <EditText
         android:id="@+id/editText7"
-        android:layout_width="106dp"
-        android:layout_height="74dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:ems="10"
-        android:hint="OHP 1RM"
+        android:hint="Overhead"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.359" />
@@ -103,7 +101,6 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.879"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -111,17 +108,16 @@
 
     <EditText
         android:id="@+id/editText8"
-        android:layout_width="110dp"
-        android:layout_height="70dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:ems="10"
-        android:hint="Barbell Row 1RM"
+        android:hint="Row"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.363" />
+        app:layout_constraintVertical_bias="0.36" />
 
     <Button
         android:id="@+id/btnFirst4"
@@ -129,7 +125,7 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -137,15 +133,15 @@
 
     <EditText
         android:id="@+id/editText9"
-        android:layout_width="111dp"
-        android:layout_height="69dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:ems="10"
-        android:hint="Deadlift 1RM"
+        android:hint="Deadlift"
         android:inputType="numberDecimal"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.137" />

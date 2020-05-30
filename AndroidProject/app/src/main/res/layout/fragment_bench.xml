@@ -10,11 +10,10 @@
     android:padding="10dp"
     android:layout_gravity="center"    >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:layout_width="379dp"
-        android:layout_height="529dp"
-        android:layout_gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,25 +22,35 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/imageView5"
             android:layout_width="wrap_content"
             android:layout_height="230dp"
-            android:src="@drawable/benchpressmodel" />
+            android:src="@drawable/benchpressmodel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_title1"
             android:layout_width="370dp"
             android:layout_height="53dp"
-            android:layout_gravity="center"
             android:text="Bench Press"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="40dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
         <LinearLayout
+            android:id="@+id/linearLayout10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title1">
 
             <TextView
                 android:id="@+id/txt_feedBack"
@@ -61,16 +70,20 @@
 
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/linearLayout9"
+            android:layout_width="357dp"
+            android:layout_height="70dp"
             android:layout_margin="6dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
 
             <Button
                 android:id="@+id/buttonSet1"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="13dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/n1"
@@ -109,7 +122,7 @@
                 android:text="" />
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

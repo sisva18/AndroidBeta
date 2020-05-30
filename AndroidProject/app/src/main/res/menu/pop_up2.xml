@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/m1"
-        android:title="Squat Press"/>
+        android:title="Squat" />
 
     <item
         android:id="@+id/m2"
@@ -10,8 +10,8 @@
 
     <item
         android:id="@+id/m3"
-        android:title="Barbell Row"/>
+        android:title="Row" />
     <item
         android:id="@+id/m4"
-        android:title="Dead lift"/>
+        android:title="Deadlift" />
 </menu>

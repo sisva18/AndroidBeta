@@ -102,7 +102,7 @@ public class ListDataActivity extends AppCompatActivity {
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(ListDataActivity.this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(ListDataActivity.this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
                         switch (item.getItemId()) {
                             case R.id.m1:
                                 // do your code

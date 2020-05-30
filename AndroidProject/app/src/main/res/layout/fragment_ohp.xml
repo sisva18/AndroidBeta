@@ -10,10 +10,9 @@
     android:layout_gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="376dp"
-        android:layout_height="537dp"
-        android:layout_gravity="center"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,25 +22,35 @@
 
 
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="376dp"
             android:layout_height="232dp"
-            android:src="@drawable/ohp" />
+            android:src="@drawable/ohp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_title1"
             android:layout_width="370dp"
             android:layout_height="53dp"
-            android:layout_gravity="center"
             android:text="Overhead Press"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="40dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <LinearLayout
+            android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title1">
 
             <TextView
                 android:id="@+id/txt_feedBack"
@@ -61,16 +70,20 @@
 
 
         <LinearLayout
+            android:id="@+id/linearLayout5"
             android:layout_width="357dp"
             android:layout_height="70dp"
             android:layout_margin="6dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
             <Button
                 android:id="@+id/buttonSet1"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="13dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/n1" />
@@ -104,7 +117,7 @@
                 android:background="@drawable/n5" />
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

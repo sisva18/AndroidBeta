@@ -6,12 +6,12 @@
 
     <item
         android:id="@+id/m2"
-        android:title="OverheadPress"/>
+        android:title="Overhead Press" />
 
     <item
         android:id="@+id/m3"
-        android:title="Barbell Row"/>
+        android:title="Row" />
     <item
         android:id="@+id/m4"
-        android:title="Dead lift"/>
+        android:title="Deadlift" />
 </menu>
